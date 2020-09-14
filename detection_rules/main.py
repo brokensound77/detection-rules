@@ -16,7 +16,7 @@ import jsonschema
 import pytoml
 from eql import load_dump
 
-from .misc import PYTHON_LICENSE, nested_set
+from .misc import PYTHON_LICENSE, nested_set, parse_config
 from . import rule_loader
 from .packaging import PACKAGE_FILE, Package, manage_versions, RELEASE_DIR
 from .rule import Rule
@@ -29,8 +29,13 @@ RULES_DIR = get_path('rules')
 
 
 @click.group('detection-rules', context_settings={'help_option_names': ['-h', '--help']})
-def root():
+@click.option('--config-file', '-c', type=click.File('r'),
+              help='Specify a config file in a non-default location '
+                   '(if the file `.detection-rules-cfg.json` exists in the root of this repo, it will auto-load')
+@click.pass_context
+def root(ctx, config_file):
     """Commands for detection-rules repository."""
+    ctx.obj = {'config': parse_config(config_file)}
 
 
 @root.command('create-rule')

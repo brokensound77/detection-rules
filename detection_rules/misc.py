@@ -197,12 +197,12 @@ def get_kibana_rules(*rule_paths, branch='master', verbose=True, threads=50):
     return kibana_rules
 
 
-def parse_config():
+def parse_config(config_file=None):
     """Parse a default config file."""
     global _CONFIG
 
     if not _CONFIG:
-        config_file = os.path.join(ROOT_DIR, '.detection-rules-cfg.json')
+        config_file = os.path.join(ROOT_DIR, config_file or '.detection-rules-cfg.json')
 
         if os.path.exists(config_file):
             with open(config_file) as f:
@@ -216,16 +216,12 @@ def parse_config():
 def set_param_values(ctx, param, value):
     """Get value for defined key."""
     key = param.name
-    config = parse_config()
     env_key = 'DR_' + key.upper()
-    prompt = True if param.hide_input is not False else False
+    config_value = ctx.obj.get('config', {}).get(key)
 
     if value:
         return value
     elif os.environ.get(env_key):
         return os.environ[env_key]
-    elif config.get(key) is not None:
-        return config[key]
-    elif prompt:
-        return click.prompt(key, default=param.default if not param.default else None, hide_input=param.hide_input,
-                            show_default=True if param.default else False)
+    elif config_value is not None:
+        return config_value

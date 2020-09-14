@@ -117,13 +117,18 @@ class CollectEvents(object):
         timestamp_map = {n: m['mappings'].get('properties', {}).get('@timestamp', {}) for n, m in mappings.items()}
         return timestamp_map
 
-    def _get_current_time(self, agent_hostname, index_str):
+    def _get_current_time(self, agent_hostname, index_str, lookback='now-1m'):
         """Get timestamp of most recent event."""
         # https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html
         timestamp_map = self._build_timestamp_map(index_str)
 
-        last_event = self._search_window(agent_hostname, index_str, start_time='now-1m', size=1, sort='@timestamp:desc')
-        last_event = last_event['hits']['hits'][0]
+        last_events = self._search_window(agent_hostname, index_str, start_time=lookback, size=1,
+                                          sort='@timestamp:desc')
+        last_event_hits = last_events['hits']['hits']
+        last_event = last_event_hits[0] if last_event_hits else None
+
+        if not last_event:
+            raise ValueError(f'No event captured within "{lookback}" to derive time from')
 
         index = last_event['_index']
         timestamp = last_event['_source']['@timestamp']
@@ -181,21 +186,28 @@ class CollectEvents(object):
 @click.argument('agent-hostname')
 @click.option('--elasticsearch-url', '-u', callback=set_param_values, expose_value=True)
 @click.option('--cloud-id', callback=set_param_values, expose_value=True)
-@click.option('--user', '-u', callback=set_param_values, expose_value=True, hide_input=False)
-@click.option('--password', '-p', callback=set_param_values, expose_value=True, hide_input=True)
+@click.option('--user', '-u', callback=set_param_values, expose_value=True)
+@click.option('--es-password', '-p', callback=set_param_values, expose_value=True)
 @click.option('--index', '-i', multiple=True, help='Index(es) to search against (default: all indexes)')
 @click.option('--agent-type', '-a', help='Restrict results to a source type (agent.type) ex: auditbeat')
 @click.option('--rta-name', '-r', help='Name of RTA in order to save events directly to unit tests data directory')
 @click.option('--rule-id', help='Updates rule mapping in rule-mapping.yml file (requires --rta-name)')
 @click.option('--view-events', is_flag=True, help='Print events after saving')
-def collect_events(agent_hostname, elasticsearch_url, cloud_id, user, password, index, agent_type, rta_name, rule_id,
-                   view_events):
+def collect_events(agent_hostname, elasticsearch_url, cloud_id, user, es_password, index, agent_type, rta_name,
+                   rule_id, view_events):
     """Collect events from Elasticsearch."""
     match = {'agent.type': agent_type} if agent_type else {}
 
+    if not (cloud_id or elasticsearch_url):
+        raise click.ClickException("Missing required --cloud-id or --elasticsearch-url")
+
+    # don't prompt for these until there's a cloud id or URL
+    user = user or click.prompt("user")
+    es_password = es_password or click.prompt("password", hide_input=True)
+
     try:
         client = get_es_client(elasticsearch_url=elasticsearch_url, use_ssl=True, cloud_id=cloud_id, user=user,
-                               password=password)
+                               password=es_password)
     except AuthenticationException:
         click.secho('Failed authentication for {}'.format(elasticsearch_url or cloud_id), fg='red', err=True)
         return ERRORS['FAILED_ES_AUTH']
@@ -231,16 +243,23 @@ def normalize_file(events_file):
 @click.argument("toml-files", nargs=-1, required=True)
 @click.option('--kibana-url', '-u', callback=set_param_values, expose_value=True)
 @click.option('--cloud-id', callback=set_param_values, expose_value=True)
-@click.option('--user', '-u', callback=set_param_values, expose_value=True, hide_input=False)
-@click.option('--password', '-p', callback=set_param_values, expose_value=True, hide_input=True)
-def kibana_upload(toml_files, kibana_url, cloud_id, user, password):
+@click.option('--user', '-u', callback=set_param_values, expose_value=True)
+@click.option('--kibana-password', '-p', callback=set_param_values, expose_value=True)
+def kibana_upload(toml_files, kibana_url, cloud_id, user, kibana_password):
     """Upload a list of rule .toml files to Kibana."""
     from uuid import uuid4
     from .packaging import manage_versions
     from .schemas import downgrade
 
+    if not (cloud_id or kibana_url):
+        raise click.ClickException("Missing required --cloud-id or --kibana-url")
+
+    # don't prompt for these until there's a cloud id or kibana URL
+    user = user or click.prompt("user")
+    kibana_password = kibana_password or click.prompt("password", hide_input=True)
+
     with Kibana(cloud_id=cloud_id, url=kibana_url) as kibana:
-        kibana.login(user, password)
+        kibana.login(user, kibana_password)
 
         file_lookup = load_rule_files(paths=toml_files)
         rules = list(load_rules(file_lookup=file_lookup).values())
