@@ -425,7 +425,7 @@ class RuleLoader:
 
     @classmethod
     @cached
-    def get_rule(cls, rule_id=None, rule_name=None, file_name=None, verbose=False):
+    def get_rule(cls, rule_id=None, rule_name=None, file_name=None, verbose=False) -> Rule:
         """Get a rule based on its id."""
         rules_lookup: Dict[str, Rule] = cls.load_rules(verbose=verbose)
         if rule_id is not None:
@@ -438,21 +438,21 @@ class RuleLoader:
                 return rule
 
     @classmethod
-    def get_rule_name(cls, rule_id, verbose=False):
+    def get_rule_name(cls, rule_id, verbose=False) -> str:
         """Get the name of a rule given the rule id."""
         rule = cls.get_rule(rule_id, verbose=verbose)
         if rule:
             return rule.name
 
     @classmethod
-    def get_file_name(cls, rule_id, verbose=False):
+    def get_file_name(cls, rule_id, verbose=False) -> str:
         """Get the file path that corresponds to a rule."""
         rule = cls.get_rule(rule_id, verbose=verbose)
         if rule:
             return rule.path
 
     @classmethod
-    def get_rule_contents(cls, rule_id, verbose=False):
+    def get_rule_contents(cls, rule_id, verbose=False) -> dict:
         """Get the full contents for a rule_id."""
         rule = cls.get_rule(rule_id, verbose=verbose)
         if rule:
@@ -460,14 +460,14 @@ class RuleLoader:
 
     @classmethod
     @cached
-    def filter_rules(cls, rules, metadata_field, value):
+    def filter_rules(cls, rules, metadata_field, value) -> List[Rule]:
         """Filter rules based on the metadata."""
         return [rule for rule in rules if rule.metadata.get(metadata_field, '') == value]
 
     @classmethod
-    def get_production_rules(cls, verbose=False):
+    def get_production_rules(cls, verbose=False) -> List[Rule]:
         """Get rules with a maturity of production."""
-        return filter_rules(load_rules(verbose=verbose).values(), 'maturity', 'production')
+        return cls.filter_rules(load_rules(verbose=verbose).values(), 'maturity', 'production')
 
 
 rta_mappings = RtaMappings()
