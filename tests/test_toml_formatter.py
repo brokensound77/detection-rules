@@ -8,7 +8,7 @@ import os
 import pytoml
 import unittest
 from detection_rules.utils import get_etc_path
-from detection_rules import rule_loader
+from detection_rules.rule_loader import RuleLoader
 from detection_rules.rule_formatter import nested_normalize, toml_write
 
 
@@ -69,7 +69,7 @@ class TestRuleTomlFormatter(unittest.TestCase):
 
     def test_format_of_all_rules(self):
         """Test all rules."""
-        rules = rule_loader.load_rules().values()
+        rules = RuleLoader.load_rules().values()
 
         for rule in rules:
             is_eql_rule = rule.type == 'eql'

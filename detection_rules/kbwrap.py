@@ -9,7 +9,7 @@ from kibana import Kibana, Signal, RuleResource
 
 from .main import root
 from .misc import add_params, client_error, kibana_options
-from .rule_loader import load_rule_files, load_rules
+from .rule_loader import RuleLoader
 from .utils import format_command_options
 
 
@@ -56,8 +56,8 @@ def upload_rule(ctx, toml_files, replace_id):
     from .packaging import manage_versions
 
     kibana = ctx.obj['kibana']
-    file_lookup = load_rule_files(paths=toml_files)
-    rules = list(load_rules(file_lookup=file_lookup).values())
+    file_lookup = RuleLoader.load_rule_files(paths=toml_files)
+    rules = list(RuleLoader.load_rules(file_lookup=file_lookup).values())
 
     # assign the versions from etc/versions.lock.json
     # rules that have changed in hash get incremented, others stay as-is.

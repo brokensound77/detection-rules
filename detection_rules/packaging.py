@@ -15,9 +15,9 @@ from typing import List, Tuple
 
 import click
 
-from . import rule_loader
 from .misc import JS_LICENSE, cached
 from .rule import Rule, downgrade_contents_from_rule  # noqa: F401
+from .rule_loader import RuleLoader
 from .utils import Ndjson, get_path, get_etc_path, load_etc_dump, save_etc_dump
 
 RELEASE_DIR = get_path("releases")
@@ -314,7 +314,7 @@ class Package(object):
     @classmethod
     def from_config(cls, config: dict = None, update_version_lock: bool = False, verbose: bool = False) -> 'Package':
         """Load a rules package given a config."""
-        all_rules = rule_loader.load_rules(verbose=False).values()
+        all_rules = RuleLoader.load_rules(verbose=False).values()
         config = config or {}
         exclude_fields = config.pop('exclude_fields', {})
         log_deprecated = config.pop('log_deprecated', False)

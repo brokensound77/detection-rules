@@ -7,8 +7,9 @@ import unittest
 import uuid
 import yaml
 
-from detection_rules import rule_loader
 from detection_rules.packaging import PACKAGE_FILE, Package
+from detection_rules.rule import Rule
+from detection_rules.rule_loader import RuleLoader
 
 
 class TestPackages(unittest.TestCase):
@@ -31,7 +32,7 @@ class TestPackages(unittest.TestCase):
             }
             return contents
 
-        rules = [rule_loader.Rule('test.toml', get_rule_contents()) for i in range(count)]
+        rules = [Rule('test.toml', get_rule_contents()) for i in range(count)]
         version_info = {
             rule.id: {
                 'rule_name': rule.name,
@@ -55,10 +56,9 @@ class TestPackages(unittest.TestCase):
             rule.contents.pop('version')
             rule.validate(as_rule=True)
 
-    @rule_loader.mock_loader
     def test_package_summary(self):
         """Test the generation of the package summary."""
-        rules = rule_loader.get_production_rules()
+        rules = RuleLoader.get_production_rules()
         package = Package(rules, 'test-package')
         changed_rule_ids, new_rule_ids, deprecated_rule_ids = package.bump_versions(save_changes=False)
         package.generate_summary_and_changelog(changed_rule_ids, new_rule_ids, deprecated_rule_ids)
@@ -93,11 +93,10 @@ class TestPackages(unittest.TestCase):
         self.assertEqual(0, len(new_rules), 'Package version bumping is improperly detecting new rules')
         self.assertEqual(2, package.rules[0].contents['version'], 'Package version not bumping on changes')
 
-    @rule_loader.mock_loader
     def test_rule_versioning(self):
         """Test that all rules are properly versioned and tracked"""
         self.maxDiff = None
-        rules = rule_loader.load_rules().values()
+        rules = RuleLoader.load_rules().values()
         original_hashes = []
         post_bump_hashes = []
 

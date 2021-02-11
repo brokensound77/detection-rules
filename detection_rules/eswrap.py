@@ -21,7 +21,7 @@ from .main import root
 from .misc import add_params, client_error, elasticsearch_options
 from .utils import format_command_options, normalize_timing_and_sort, unix_time_to_formatted, get_path
 from .rule import Rule
-from .rule_loader import get_rule, rta_mappings
+from .rule_loader import RuleLoader, rta_mappings
 
 
 COLLECTION_DIR = get_path('collections')
@@ -87,7 +87,7 @@ class RtaEvents(object):
         """Evaluate a rule against collected events and update mapping."""
         from .utils import combine_sources, evaluate
 
-        rule = get_rule(rule_id, verbose=False)
+        rule = RuleLoader.get_rule(rule_id, verbose=False)
         merged_events = combine_sources(*self.events.values())
         filtered = evaluate(rule, merged_events)
 

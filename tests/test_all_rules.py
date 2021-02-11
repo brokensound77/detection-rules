@@ -17,7 +17,8 @@ import toml
 import pytoml
 from rta import get_ttp_names
 
-from detection_rules import attack, beats, ecs, rule_loader
+from detection_rules import attack, beats, ecs
+from detection_rules.rule_loader import RuleLoader, find_unneeded_defaults_from_rule
 from detection_rules.utils import load_etc_dump
 from detection_rules.rule import Rule
 
@@ -27,14 +28,14 @@ class TestValidRules(unittest.TestCase):
 
     def test_schema_and_dupes(self):
         """Ensure that every rule matches the schema and there are no duplicates."""
-        rule_files = rule_loader.load_rule_files()
+        rule_files = RuleLoader.load_rule_files()
         self.assertGreaterEqual(len(rule_files), 1, 'No rules were loaded from rules directory!')
 
     def test_all_rule_files(self):
         """Ensure that every rule file can be loaded and validate against schema."""
         rules = []
 
-        for file_name, contents in rule_loader.load_rule_files().items():
+        for file_name, contents in RuleLoader.load_rule_files().items():
             try:
                 rule = Rule(file_name, contents)
                 rules.append(rule)
@@ -49,30 +50,30 @@ class TestValidRules(unittest.TestCase):
 
     def test_rule_loading(self):
         """Ensure that all rules validate."""
-        rule_loader.load_rules().values()
+        RuleLoader.load_rules().values()
 
     def test_file_names(self):
         """Test that the file names meet the requirement."""
-        file_pattern = rule_loader.FILE_PATTERN
+        file_pattern = RuleLoader.FILE_PATTERN
 
         self.assertIsNone(re.match(file_pattern, 'NotValidRuleFile.toml'),
                           'Incorrect pattern for verifying rule names: {}'.format(file_pattern))
         self.assertIsNone(re.match(file_pattern, 'still_not_a_valid_file_name.not_json'),
                           'Incorrect pattern for verifying rule names: {}'.format(file_pattern))
 
-        for rule_file in rule_loader.load_rule_files().keys():
+        for rule_file in RuleLoader.load_rule_files().keys():
             self.assertIsNotNone(re.match(file_pattern, os.path.basename(rule_file)),
                                  'Invalid file name for {}'.format(rule_file))
 
     def test_all_rules_as_rule_schema(self):
         """Ensure that every rule file validates against the rule schema."""
-        for file_name, contents in rule_loader.load_rule_files().items():
+        for file_name, contents in RuleLoader.load_rule_files().items():
             rule = Rule(file_name, contents)
             rule.validate(as_rule=True)
 
     def test_all_rule_queries_optimized(self):
         """Ensure that every rule query is in optimized form."""
-        for file_name, contents in rule_loader.load_rule_files().items():
+        for file_name, contents in RuleLoader.load_rule_files().items():
             rule = Rule(file_name, contents)
 
             if rule.query and rule.contents['language'] == 'kuery':
@@ -86,9 +87,9 @@ class TestValidRules(unittest.TestCase):
         """Test that values that are not required in the schema are not set with default values."""
         rules_with_hits = {}
 
-        for file_name, contents in rule_loader.load_rule_files().items():
+        for file_name, contents in RuleLoader.load_rule_files().items():
             rule = Rule(file_name, contents)
-            default_matches = rule_loader.find_unneeded_defaults_from_rule(rule)
+            default_matches = find_unneeded_defaults_from_rule(rule)
 
             if default_matches:
                 rules_with_hits['{} - {}'.format(rule.name, rule.id)] = default_matches
@@ -97,14 +98,13 @@ class TestValidRules(unittest.TestCase):
             json.dumps(rules_with_hits, indent=2))
         self.assertDictEqual(rules_with_hits, {}, error_msg)
 
-    @rule_loader.mock_loader
     def test_production_rules_have_rta(self):
         """Ensure that all production rules have RTAs."""
         mappings = load_etc_dump('rule-mapping.yml')
 
         ttp_names = get_ttp_names()
 
-        for rule in rule_loader.get_production_rules():
+        for rule in RuleLoader.get_production_rules():
             if rule.type == 'query' and rule.id in mappings:
                 matching_rta = mappings[rule.id].get('rta_name')
 
@@ -117,7 +117,7 @@ class TestValidRules(unittest.TestCase):
     def test_duplicate_file_names(self):
         """Test that no file names are duplicated."""
         name_map = defaultdict(list)
-        for file_path in rule_loader.load_rule_files():
+        for file_path in RuleLoader.load_rule_files():
             base_name = os.path.basename(file_path)
             name_map[base_name].append(file_path)
 
@@ -134,7 +134,7 @@ class TestThreatMappings(unittest.TestCase):
         replacement_map = attack.techniques_redirect_map
         revoked = list(attack.revoked)
         deprecated = list(attack.deprecated)
-        rules = rule_loader.load_rules().values()
+        rules = RuleLoader.load_rules().values()
 
         for rule in rules:
             revoked_techniques = {}
@@ -155,7 +155,7 @@ class TestThreatMappings(unittest.TestCase):
 
     def test_tactic_to_technique_correlations(self):
         """Ensure rule threat info is properly related to a single tactic and technique."""
-        rules = rule_loader.load_rules().values()
+        rules = RuleLoader.load_rules().values()
 
         for rule in rules:
             threat_mapping = rule.contents.get('threat')
@@ -215,7 +215,7 @@ class TestThreatMappings(unittest.TestCase):
 
     def test_duplicated_tactics(self):
         """Check that a tactic is only defined once."""
-        rules = rule_loader.load_rules().values()
+        rules = RuleLoader.load_rules().values()
 
         for rule in rules:
             rule_info = f'{rule.id} - {rule.name}'
@@ -233,7 +233,7 @@ class TestRuleTags(unittest.TestCase):
 
     def test_casing_and_spacing(self):
         """Ensure consistent and expected casing for controlled tags."""
-        rules = rule_loader.load_rules().values()
+        rules = RuleLoader.load_rules().values()
 
         def normalize(s):
             return ''.join(s.lower().split())
@@ -259,7 +259,7 @@ class TestRuleTags(unittest.TestCase):
 
     def test_required_tags(self):
         """Test that expected tags are present within rules."""
-        rules = rule_loader.load_rules().values()
+        rules = RuleLoader.load_rules().values()
 
         # indexes considered; only those with obvious relationships included
         # 'apm-*-transaction*', 'auditbeat-*', 'endgame-*', 'filebeat-*', 'logs-*', 'logs-aws*',
@@ -322,7 +322,7 @@ class TestRuleTimelines(unittest.TestCase):
 
     def test_timeline_has_title(self):
         """Ensure rules with timelines have a corresponding title."""
-        for rule in rule_loader.load_rules().values():
+        for rule in RuleLoader.load_rules().values():
             rule_str = f'{rule.id} - {rule.name}'
             timeline_id = rule.contents.get('timeline_id')
             timeline_title = rule.contents.get('timeline_title')
@@ -347,7 +347,7 @@ class TestRuleFiles(unittest.TestCase):
 
     def test_rule_file_names_by_tactic(self):
         """Test to ensure rule files have the primary tactic prepended to the filename."""
-        rules = rule_loader.load_rules().values()
+        rules = RuleLoader.load_rules().values()
         bad_name_rules = []
 
         for rule in rules:
@@ -378,7 +378,7 @@ class TestRuleMetadata(unittest.TestCase):
 
     def test_ecs_and_beats_opt_in_not_latest_only(self):
         """Test that explicitly defined opt-in validation is not only the latest versions to avoid stale tests."""
-        rules = rule_loader.load_rules().values()
+        rules = RuleLoader.load_rules().values()
 
         for rule in rules:
             beats_version = rule.metadata.get('beats_version')

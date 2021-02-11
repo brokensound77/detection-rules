@@ -15,10 +15,10 @@ import click
 import jsonschema
 import pytoml
 
-from . import rule_loader
 from .misc import client_error, nested_set, parse_config
 from .rule import Rule
 from .rule_formatter import toml_write
+from .rule_loader import RuleLoader, find_unneeded_defaults_from_rule
 from .schemas import CurrentSchema, available_versions
 from .utils import get_path, clear_caches, load_rule_contents
 
@@ -49,7 +49,7 @@ def create_rule(path, config, required_only, rule_type):
     try:
         return Rule.build(path, rule_type=rule_type, required_only=required_only, save=True, **contents)
     finally:
-        rule_loader.reset()
+        RuleLoader.reset()
 
 
 @root.command('generate-rules-index')
@@ -58,15 +58,14 @@ def create_rule(path, config, required_only, rule_type):
 @click.pass_context
 def generate_rules_index(ctx: click.Context, query, overwrite, save_files=True):
     """Generate enriched indexes of rules, based on a KQL search, for indexing/importing into elasticsearch/kibana."""
-    from . import rule_loader
     from .packaging import load_current_package_version, Package
 
     if query:
         rule_paths = [r['file'] for r in ctx.invoke(search_rules, query=query, verbose=False)]
-        rules = rule_loader.load_rules(rule_loader.load_rule_files(paths=rule_paths, verbose=False), verbose=False)
+        rules = RuleLoader.load_rules(RuleLoader.load_rule_files(paths=rule_paths))
         rules = rules.values()
     else:
-        rules = rule_loader.load_rules(verbose=False).values()
+        rules = RuleLoader.load_rules(verbose=False).values()
 
     rule_count = len(rules)
     package = Package(rules, load_current_package_version(), verbose=False)
@@ -120,20 +119,20 @@ def toml_lint(rule_file):
         rule = Rule(path=rule_file.name, contents=contents)
 
         # removed unneeded defaults
-        for field in rule_loader.find_unneeded_defaults_from_rule(rule):
+        for field in find_unneeded_defaults_from_rule(rule):
             rule.contents.pop(field, None)
 
         rule.save(as_rule=True)
     else:
-        for rule in rule_loader.load_rules().values():
+        for rule in RuleLoader.load_rules().values():
 
             # removed unneeded defaults
-            for field in rule_loader.find_unneeded_defaults_from_rule(rule):
+            for field in find_unneeded_defaults_from_rule(rule):
                 rule.contents.pop(field, None)
 
             rule.save(as_rule=True)
 
-    rule_loader.reset()
+    RuleLoader.reset()
     click.echo('Toml file linting complete')
 
 
@@ -149,7 +148,7 @@ def toml_lint(rule_file):
 def mass_update(ctx, query, metadata, language, field):
     """Update multiple rules based on eql results."""
     results = ctx.invoke(search_rules, query=query, language=language, verbose=False)
-    rules = [rule_loader.get_rule(r['rule_id'], verbose=False) for r in results]
+    rules = [RuleLoader.get_rule(r['rule_id'], verbose=False) for r in results]
 
     for rule in rules:
         for key, value in field:
@@ -172,7 +171,7 @@ def view_rule(ctx, rule_id, rule_file, api_format, verbose=True):
     rule = None
 
     if rule_id:
-        rule = rule_loader.get_rule(rule_id, verbose=False)
+        rule = RuleLoader.get_rule(rule_id, verbose=False)
     elif rule_file:
         contents = {k: v for k, v in load_rule_contents(rule_file, single_only=True)[0].items() if v}
 
@@ -214,7 +213,7 @@ def export_rules(rule_id, rule_file, directory, outfile, replace_id, stack_versi
         client_error('Required: at least one of --rule-id, --rule-file, or --directory')
 
     if rule_id:
-        all_rules = {r.id: r for r in rule_loader.load_rules(verbose=False).values()}
+        all_rules = {r.id: r for r in RuleLoader.load_rules().values()}
         missing = [rid for rid in rule_id if rid not in all_rules]
 
         if missing:
@@ -230,8 +229,8 @@ def export_rules(rule_id, rule_file, directory, outfile, replace_id, stack_versi
     for dirpath in directory:
         rule_files.extend(list(Path(dirpath).rglob('*.toml')))
 
-    file_lookup = rule_loader.load_rule_files(verbose=False, paths=rule_files)
-    rules_from_files = rule_loader.load_rules(file_lookup=file_lookup).values() if file_lookup else []
+    file_lookup = RuleLoader.load_rule_files(paths=rule_files)
+    rules_from_files = RuleLoader.load_rules(file_lookup=file_lookup).values() if file_lookup else []
 
     # rule_loader.load_rules handles checks for duplicate rule IDs - this means rules loaded by ID are de-duped and
     #   rules loaded from files and directories are de-duped from each other, so this check is to ensure that there is
@@ -261,7 +260,7 @@ def export_rules(rule_id, rule_file, directory, outfile, replace_id, stack_versi
 def validate_rule(ctx, rule_id, rule_name, path):
     """Check if a rule staged in rules dir validates against a schema."""
     try:
-        rule = rule_loader.get_rule(rule_id, rule_name, path, verbose=False)
+        rule = RuleLoader.get_rule(rule_id, rule_name, path, verbose=False)
         if not rule:
             client_error('Rule not found!')
 
@@ -276,7 +275,7 @@ def validate_rule(ctx, rule_id, rule_name, path):
 @click.option('--fail/--no-fail', default=True, help='Fail on first failure or process through all printing errors.')
 def validate_all(fail):
     """Check if all rules validates against a schema."""
-    rule_loader.load_rules(verbose=True, error=fail)
+    RuleLoader.load_rules(verbose=True, error=fail)
     click.echo('Rule validation successful')
 
 
@@ -294,7 +293,7 @@ def search_rules(query, columns, language, count, verbose=True, rules: Dict[str,
     from eql.pipes import CountPipe
 
     flattened_rules = []
-    rules = rules or rule_loader.load_rule_files(verbose=verbose)
+    rules = rules or RuleLoader.load_rule_files(verbose=verbose)
 
     for file_name, rule_doc in rules.items():
         flat = {"file": os.path.relpath(file_name)}
