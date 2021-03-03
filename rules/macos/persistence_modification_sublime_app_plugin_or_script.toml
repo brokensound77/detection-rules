@@ -1,13 +1,14 @@
 [metadata]
 creation_date = "2020/12/23"
 maturity = "production"
+minimum_kibana_version = "7.13"
 updated_date = "2020/12/23"
 
 [rule]
 author = ["Elastic"]
 description = """
-Adversaries may create or modify the Sublime application plugins or scripts to execute a malicious payload each time
-the Sublime application is started.
+Adversaries may create or modify the Sublime application plugins or scripts to execute a malicious payload each time the
+Sublime application is started.
 """
 false_positives = ["Legitimate Sublime plugins or application updates"]
 from = "now-9m"
@@ -37,7 +38,6 @@ file where event.type in ("change", "creation") and file.extension : "py" and
       "/System/Library/PrivateFrameworks/DesktopServicesPriv.framework/Versions/A/Resources/DesktopServicesHelper", 
       "/Applications/Sublime Text.app/Contents/MacOS/plugin_host"
     )
-                 
 '''
 
 
@@ -53,3 +53,4 @@ reference = "https://attack.mitre.org/techniques/T1554/"
 id = "TA0003"
 name = "Persistence"
 reference = "https://attack.mitre.org/tactics/TA0003/"
+

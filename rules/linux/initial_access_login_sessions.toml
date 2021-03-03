@@ -1,6 +1,7 @@
 [metadata]
 creation_date = "2020/07/08"
 maturity = "production"
+minimum_kibana_version = "7.13"
 updated_date = "2020/07/08"
 
 [rule]
@@ -10,7 +11,9 @@ index = ["auditbeat-*"]
 language = "kuery"
 license = "Elastic License"
 name = "Auditd Max Login Sessions"
-references = ["https://github.com/linux-pam/linux-pam/blob/70c32cc6fca51338f92afa58eb75b1107a5c2430/modules/pam_limits/pam_limits.c#L1007"]
+references = [
+    "https://github.com/linux-pam/linux-pam/blob/70c32cc6fca51338f92afa58eb75b1107a5c2430/modules/pam_limits/pam_limits.c#L1007",
+]
 risk_score = 47
 rule_id = "20dc4620-3b68-4269-8124-ca5091e00ea8"
 severity = "medium"
@@ -46,3 +49,4 @@ reference = "https://attack.mitre.org/techniques/T1078/"
 id = "TA0003"
 name = "Persistence"
 reference = "https://attack.mitre.org/tactics/TA0003/"
+

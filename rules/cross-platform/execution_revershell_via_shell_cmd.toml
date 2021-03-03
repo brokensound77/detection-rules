@@ -1,6 +1,7 @@
 [metadata]
 creation_date = "2020/01/07"
 maturity = "production"
+minimum_kibana_version = "7.13"
 updated_date = "2020/01/07"
 
 [rule]
@@ -41,3 +42,4 @@ reference = "https://attack.mitre.org/techniques/T1059/"
 id = "TA0002"
 name = "Execution"
 reference = "https://attack.mitre.org/tactics/TA0002/"
+

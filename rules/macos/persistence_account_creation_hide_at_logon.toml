@@ -1,6 +1,7 @@
 [metadata]
 creation_date = "2020/01/05"
 maturity = "production"
+minimum_kibana_version = "7.13"
 updated_date = "2020/01/05"
 
 [rule]
@@ -22,8 +23,7 @@ tags = ["Elastic", "Host", "macOS", "Threat Detection", "Persistence"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
- process.name:dscl and process.args:(IsHidden and create and (true or 1 or yes))
+event.category:process and event.type:(start or process_started) and process.name:dscl and process.args:(IsHidden and create and (true or 1 or yes))
 '''
 
 

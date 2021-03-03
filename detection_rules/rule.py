@@ -39,6 +39,7 @@ class Rule(object):
         self.formatted_rule = copy.deepcopy(self.contents).get('query', None)
 
         # all schemas will validate back to the minimum supported
+        assert self.metadata.get('minimum_kibana_version'), 'missing required metadata field: minimum_kibana_version'
         self.minimum_kibana_version = Version(self.metadata['minimum_kibana_version'])
         self.supported_kibana_schemas = [s for s in all_schemas
                                          if Version(s.STACK_VERSION) >= self.minimum_kibana_version]

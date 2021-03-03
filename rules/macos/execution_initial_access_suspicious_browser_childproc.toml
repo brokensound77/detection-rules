@@ -1,6 +1,7 @@
 [metadata]
 creation_date = "2020/12/23"
 maturity = "production"
+minimum_kibana_version = "7.13"
 updated_date = "2020/12/23"
 
 [rule]
@@ -70,3 +71,4 @@ reference = "https://attack.mitre.org/techniques/T1189/"
 id = "TA0001"
 name = "Initial Access"
 reference = "https://attack.mitre.org/tactics/TA0001/"
+
