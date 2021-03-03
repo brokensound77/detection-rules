@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/17"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "9bc213db370d6b16ed41c9f33fa1372c70cf78a42a796d2cffbf715eec4eda0e"
+
 
 [rule]
 author = ["Elastic"]
@@ -24,9 +31,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Persistence"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.parent.name:(CompatTelRunner.exe or compattelrunner.exe) and process.args:-cv* and
-  not process.name:(conhost.exe or DeviceCensus.exe or devicecensus.exe or CompatTelRunner.exe or compattelrunner.exe or DismHost.exe or dismhost.exe or rundll32.exe or powershell.exe)
+event.category:process and event.type:(start or process_started) and process.parent.name:(CompatTelRunner.exe or compattelrunner.exe) and process.args:-cv* and not process.name:(conhost.exe or DeviceCensus.exe or devicecensus.exe or CompatTelRunner.exe or compattelrunner.exe or DismHost.exe or dismhost.exe or rundll32.exe or powershell.exe)
 '''
 
 

@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/12/07"
 maturity = "production"
-updated_date = "2020/12/09"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "e528a87ea96507db3839017216ed364081e638391209af086b126d1de534f30c"
+
 
 [rule]
 author = ["Elastic"]
@@ -43,6 +50,7 @@ reference = "https://attack.mitre.org/techniques/T1543/"
 id = "T1543.001"
 name = "Launch Agent"
 reference = "https://attack.mitre.org/techniques/T1543/001/"
+
 
 
 [rule.threat.tactic]

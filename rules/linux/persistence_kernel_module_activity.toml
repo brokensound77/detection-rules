@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/02/18"
 maturity = "production"
-updated_date = "2020/12/09"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "000b7d6f15e6222587aa093137a9274ba9df2f7c8f9042677705c945ce52ea0c"
+
 
 [rule]
 author = ["Elastic"]
@@ -41,6 +48,7 @@ reference = "https://attack.mitre.org/techniques/T1547/"
 id = "T1547.006"
 name = "Kernel Modules and Extensions"
 reference = "https://attack.mitre.org/techniques/T1547/006/"
+
 
 
 [rule.threat.tactic]

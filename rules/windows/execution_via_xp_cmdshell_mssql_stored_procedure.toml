@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/14"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "0912ffe51199a5223de302e2fa4706ca0d97b6986e58bbb87fcf230065e80cf1"
+
 
 [rule]
 author = ["Elastic"]
@@ -21,9 +28,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Execution"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.name:cmd.exe and
-  process.parent.name:sqlservr.exe
+event.category:process and event.type:(start or process_started) and process.name:cmd.exe and process.parent.name:sqlservr.exe
 '''
 
 

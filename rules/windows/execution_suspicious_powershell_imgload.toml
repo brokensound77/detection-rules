@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/11/17"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "6151d817ba2a6e3c9e8b013e3386c79d99841fa23d379b8b2073a15e479d89cf"
+
 
 [rule]
 author = ["Elastic"]
@@ -91,3 +98,4 @@ reference = "https://attack.mitre.org/techniques/T1059/001/"
 id = "TA0002"
 name = "Execution"
 reference = "https://attack.mitre.org/tactics/TA0002/"
+

@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/02/18"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "3353dd92058ec6c3b5d5a8d4a0dff02a971e987382aafc74111591d6182d2e0f"
+
 
 [rule]
 author = ["Elastic"]
@@ -21,9 +28,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.name:netsh.exe and
-  process.args:(disable and firewall and set) or process.args:(advfirewall and off and state)
+event.category:process and event.type:(start or process_started) and process.name:netsh.exe and process.args:(disable and firewall and set) or process.args:(advfirewall and off and state)
 '''
 
 
@@ -37,6 +42,7 @@ reference = "https://attack.mitre.org/techniques/T1562/"
 id = "T1562.001"
 name = "Disable or Modify Tools"
 reference = "https://attack.mitre.org/techniques/T1562/001/"
+
 
 
 [rule.threat.tactic]

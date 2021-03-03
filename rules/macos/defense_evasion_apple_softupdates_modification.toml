@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2021/01/15"
 maturity = "production"
-updated_date = "2021/01/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_rule_created_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "4daba1617fc717648cd6c90af9f2fdca8124f371dc0d9456a186d7810bd4f8fd"
+
 
 [rule]
 author = ["Elastic"]
@@ -23,9 +30,7 @@ tags = ["Elastic", "Host", "macOS", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
- process.name:defaults and 
- process.args:(write and "-bool" and (com.apple.SoftwareUpdate or /Library/Preferences/com.apple.SoftwareUpdate.plist) and not (TRUE or true))
+event.category:process and event.type:(start or process_started) and process.name:defaults and process.args:(write and "-bool" and (com.apple.SoftwareUpdate or /Library/Preferences/com.apple.SoftwareUpdate.plist) and not (TRUE or true))
 '''
 
 
@@ -39,6 +44,7 @@ reference = "https://attack.mitre.org/techniques/T1562/"
 id = "T1562.001"
 name = "Disable or Modify Tools"
 reference = "https://attack.mitre.org/techniques/T1562/001/"
+
 
 
 [rule.threat.tactic]

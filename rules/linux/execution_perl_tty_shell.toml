@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/04/16"
 maturity = "production"
-updated_date = "2020/11/03"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "efe7bd02504d62b8781e6ffc70abc015bd4025c4b7fd67565e568841919b53e7"
+
 
 [rule]
 author = ["Elastic"]
@@ -21,8 +28,7 @@ tags = ["Elastic", "Host", "Linux", "Threat Detection", "Execution"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and process.name:perl and
-  process.args:("exec \"/bin/sh\";" or "exec \"/bin/dash\";" or "exec \"/bin/bash\";")
+event.category:process and event.type:(start or process_started) and process.name:perl and process.args:("exec \"/bin/sh\";" or "exec \"/bin/dash\";" or "exec \"/bin/bash\";")
 '''
 
 

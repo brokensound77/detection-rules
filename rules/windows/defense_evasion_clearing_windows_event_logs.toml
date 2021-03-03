@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/02/18"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "25d06b46112f2192e4551cb7bb328e25b4094723ec650ccd34321d1a30fe5f43"
+
 
 [rule]
 author = ["Elastic"]
@@ -21,9 +28,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(process_started or start) and 
-(process.name:"wevtutil.exe" or process.pe.original_file_name:"wevtutil.exe") and 
-process.args:("/e:false" or cl or "clear-log") or process.name:"powershell.exe" and process.args:"Clear-EventLog"
+event.category:process and event.type:(process_started or start) and (process.name:"wevtutil.exe" or process.pe.original_file_name:"wevtutil.exe") and process.args:("/e:false" or cl or "clear-log") or process.name:"powershell.exe" and process.args:"Clear-EventLog"
 '''
 
 

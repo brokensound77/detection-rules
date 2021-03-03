@@ -9,6 +9,8 @@ import yaml
 
 from detection_rules import rule_loader
 from detection_rules.packaging import PACKAGE_FILE, Package
+from detection_rules.rule import Rule
+from detection_rules.schemas import CurrentSchema
 
 
 class TestPackages(unittest.TestCase):
@@ -18,20 +20,23 @@ class TestPackages(unittest.TestCase):
     def get_test_rule(version=1, count=1):
         def get_rule_contents():
             contents = {
-                "author": ["Elastic"],
-                "description": "test description",
-                "language": "kuery",
-                "license": "Elastic License",
-                "name": "test rule",
-                "query": "process.name:test.query",
-                "risk_score": 21,
-                "rule_id": str(uuid.uuid4()),
-                "severity": "low",
-                "type": "query"
+                "metadata": {"minimum_kibana_version": CurrentSchema.STACK_VERSION},
+                "rule": {
+                    "author": ["Elastic"],
+                    "description": "test description",
+                    "language": "kuery",
+                    "license": "Elastic License",
+                    "name": "test rule",
+                    "query": "process.name:test.query",
+                    "risk_score": 21,
+                    "rule_id": str(uuid.uuid4()),
+                    "severity": "low",
+                    "type": "query"
+                }
             }
             return contents
 
-        rules = [rule_loader.Rule('test.toml', get_rule_contents()) for i in range(count)]
+        rules = [Rule('test.toml', get_rule_contents()) for i in range(count)]
         version_info = {
             rule.id: {
                 'rule_name': rule.name,
@@ -58,7 +63,7 @@ class TestPackages(unittest.TestCase):
     @rule_loader.mock_loader
     def test_package_summary(self):
         """Test the generation of the package summary."""
-        rules = rule_loader.get_production_rules()
+        rules = rule_loader.get_production_rules(include_deprecated=True)
         package = Package(rules, 'test-package')
         changed_rule_ids, new_rule_ids, deprecated_rule_ids = package.bump_versions(save_changes=False)
         package.generate_summary_and_changelog(changed_rule_ids, new_rule_ids, deprecated_rule_ids)

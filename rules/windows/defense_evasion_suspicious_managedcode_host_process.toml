@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/21"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "7fba11b2c12529691253fc48663811410a081ac8372ceac41a2636a22b9de2d8"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,8 +29,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:file and not event.type:deletion and
-  file.name:(wscript.exe.log or mshta.exe.log or wscript.exe.log or wmic.exe.log or svchost.exe.log or dllhost.exe.log or cmstp.exe.log or regsvr32.exe.log)
+event.category:file and not event.type:deletion and file.name:(wscript.exe.log or mshta.exe.log or wscript.exe.log or wmic.exe.log or svchost.exe.log or dllhost.exe.log or cmstp.exe.log or regsvr32.exe.log)
 '''
 
 

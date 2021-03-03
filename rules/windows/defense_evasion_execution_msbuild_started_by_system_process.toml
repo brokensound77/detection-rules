@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/03/25"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "fe3ec0b5e7000c112ce75445ebe1a42cec2406ff713d7bddbb7c5051258571b8"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,9 +29,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.name:MSBuild.exe and
-  process.parent.name:(explorer.exe or wmiprvse.exe)
+event.category:process and event.type:(start or process_started) and process.name:MSBuild.exe and process.parent.name:(explorer.exe or wmiprvse.exe)
 '''
 
 

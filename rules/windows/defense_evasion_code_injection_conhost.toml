@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/31"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "169ea34cde3e67d6f1816b8e83aff7e61c5c460a4857d27dde15a769a2629785"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,8 +29,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.parent.name:conhost.exe
+event.category:process and event.type:(start or process_started) and process.parent.name:conhost.exe
 '''
 
 

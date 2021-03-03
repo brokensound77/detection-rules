@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/18"
 maturity = "production"
-updated_date = "2020/12/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "db24a8b5bfdf52f87c824497bc9680d1b70a775a9cb08286704746ed74ca17e0"
+
 
 [rule]
 author = ["Elastic"]
@@ -48,6 +55,7 @@ reference = "https://attack.mitre.org/techniques/T1562/"
 id = "T1562.001"
 name = "Disable or Modify Tools"
 reference = "https://attack.mitre.org/techniques/T1562/001/"
+
 
 
 [rule.threat.tactic]

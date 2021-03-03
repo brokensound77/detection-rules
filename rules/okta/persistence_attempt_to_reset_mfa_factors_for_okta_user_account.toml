@@ -1,14 +1,21 @@
 [metadata]
 creation_date = "2020/05/21"
 maturity = "production"
-updated_date = "2020/10/26"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "56a5d971043bcc6813ccef21f4786e1ae23536ab14d4603ce5f9931c1bed2083"
+
 
 [rule]
 author = ["Elastic"]
 description = """
-Detects attempts to reset an Okta user's enrolled multi-factor authentication (MFA) factors. An adversary may attempt
-to reset the MFA factors for an Okta user's account in order to register new MFA factors and abuse the account to blend
-in with normal activity in the victim's environment.
+Detects attempts to reset an Okta user's enrolled multi-factor authentication (MFA) factors. An adversary may attempt to
+reset the MFA factors for an Okta user's account in order to register new MFA factors and abuse the account to blend in
+with normal activity in the victim's environment.
 """
 false_positives = [
     """
@@ -48,3 +55,4 @@ reference = "https://attack.mitre.org/techniques/T1098/"
 id = "TA0003"
 name = "Persistence"
 reference = "https://attack.mitre.org/tactics/TA0003/"
+

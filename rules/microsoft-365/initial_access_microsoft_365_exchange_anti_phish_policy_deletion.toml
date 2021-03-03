@@ -1,14 +1,21 @@
 [metadata]
 creation_date = "2020/11/19"
 maturity = "production"
-updated_date = "2020/12/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "7cf04743243078b0532bdf97817765e8bd16bff043fca55642d24032d8631eb8"
+
 
 [rule]
 author = ["Elastic"]
 description = """
-Identifies the deletion of an anti-phishing policy in Microsoft 365. By default, Microsoft 365 includes built-in features that
-help protect users from phishing attacks. Anti-phishing polices increase this protection by refining settings to better
-detect and prevent attacks.
+Identifies the deletion of an anti-phishing policy in Microsoft 365. By default, Microsoft 365 includes built-in
+features that help protect users from phishing attacks. Anti-phishing polices increase this protection by refining
+settings to better detect and prevent attacks.
 """
 false_positives = [
     """

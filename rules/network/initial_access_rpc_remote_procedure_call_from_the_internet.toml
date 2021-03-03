@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/02/18"
 maturity = "production"
-updated_date = "2020/11/03"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "eaed9eb3b9f22c95ce23b56b78f56eab96752442afbe674da92c6d196a4fe8de"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,23 +29,7 @@ tags = ["Elastic", "Host", "Network", "Threat Detection", "Initial Access"]
 type = "query"
 
 query = '''
-event.category:(network or network_traffic) and network.transport:tcp and (destination.port:135 or event.dataset:zeek.dce_rpc) and
-  not source.ip:(
-    10.0.0.0/8 or
-    127.0.0.0/8 or
-    169.254.0.0/16 or
-    172.16.0.0/12 or
-    192.168.0.0/16 or
-    224.0.0.0/4 or
-    "::1" or
-    "FE80::/10" or
-    "FF00::/8"
-  ) and
-  destination.ip:(
-    10.0.0.0/8 or
-    172.16.0.0/12 or
-    192.168.0.0/16
-  )
+event.category:(network or network_traffic) and network.transport:tcp and (destination.port:135 or event.dataset:zeek.dce_rpc) and not source.ip:( 10.0.0.0/8 or 127.0.0.0/8 or 169.254.0.0/16 or 172.16.0.0/12 or 192.168.0.0/16 or 224.0.0.0/4 or "::1" or "FE80::/10" or "FF00::/8" ) and destination.ip:( 10.0.0.0/8 or 172.16.0.0/12 or 192.168.0.0/16 )
 '''
 
 

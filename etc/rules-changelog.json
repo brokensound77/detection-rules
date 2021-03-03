@@ -1,0 +1,2884 @@
+{
+  "changelog": {
+    "00140285-b827-4aee-aa09-8113f58a08f3": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e28f57518d6dff718770290d9830733d01be0444e5a3ff61442482ee410ac7f0"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "0022d47d-39c7-4f69-a232-4fe9dc7a3acd": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "45fa2300f00559f023471df4bb50b0aa6d55ce44a19f64c901f06b9edaaf4c0c"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "035889c4-2686-4583-a7df-67f89c292f2c": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "7ee4bbe65989ca3ba4cae6b3456d66662e4a6a32bfdc974d13017f78a8e4a818"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "0564fb9d-90b9-4234-a411-82a546dc1343": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3ca256e043822ef92a06a4ced730c85365dbd27410928c22750fdf1712ea362a"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "05b358de-aa6d-4f6c-89e6-78f74018b43b": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "b3064bc33441bd01ef7c5e326de475c0860b0b5a973292d8e681ec01a08a9ff5"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "0635c542-1b96-4335-9b47-126582d2c19a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "1be5abb8b7cdf2aa02c9a633fc02710711d66700aec2ccf1ae33f11b5b750fbd"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "06dceabf-adca-48af-ac79-ffdf4c3b1e9a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "b7511cbce498f385f51c6a14f29118580140a910c7c63906e6bd73ca5bd81042"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 5
+      }
+    ],
+    "074464f9-f30d-4029-8c03-0ed237fffec7": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "eaf8d60ba815611a16b5a58410c2ea410de5667bc81706713db37f1255e7f7f8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "0c7ca5c2-728d-4ad9-b1c5-bbba83ecb1f4": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "5c395ef601dda89c56e5214318bdbffbd64f8cdb9457178b29e31d06d993b360"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "0d8ad79f-9025-45d8-80c1-4f0cd3c5e8e5": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e2c6148361e4c6209d7545b33c67134dce442b4d31b25174f8f198b6ffd025d4"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "0e79980b-4250-4a50-a509-69294c14e84b": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e853706c790634652e0ca984bfa8e069f2f6543eb56ba9cfc6454e2aa4849222"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "0f616aee-8161-4120-857e-742366f5eeb3": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e8674494971c84177aef76c6df1fe7dc9bb1d22fcf4610772180057d25a59efe"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "1160dcdb-0a0a-4a79-91d8-9b84616edebd": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "d455d85f9daa746a4696b104351f89e3768b78d49f7cd8c5ea0805a224477883"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "1178ae09-5aff-460a-9f2f-455cd0ac4d8e": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "036eeb5512fe996af8ec0436ea50b11ed760bf25f7b46aebefc121c2a45fc3e8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "12f07955-1674-44f7-86b5-c35da0a6f41a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3eeb851bf28b868721a73f82b50cfca6b544cff835aaa9f56fc4e4f989b3815f"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "15c0b7a7-9c34-4869-b25b-fa6518414899": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "adc3a7c80a5000a6177b44eba1b7d7f6ba40541499a00372c2b2d70e20436317"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "16a52c14-7883-47af-8745-9357803f0d4c": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "6400143bfe6510bc4166950a65b4a25e25b0dd051b13c3a84572f24ef91a577e"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "17c7f6a5-5bc9-4e1f-92bf-13632d24384d": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "6dc17115d6902e6b03a8faf85dcf8890314e600b12b78e4ad9950070c6829ae4"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "1aa9181a-492b-4c01-8b16-fa0735786b2b": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "153ffce564fd74459aa5d9ba274f52b6e5f34295a6da3deac91bf1b06c78289a"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "1cd01db9-be24-4bef-8e7c-e923f0ff78ab": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "4b878bc6db62e642371b3884b302320413668cba128b9572c45405be81d33b19"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "1d276579-3380-4095-ad38-e596a01bc64f": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "844213f4a481a880318def342ed490381bf998fa879b1cc45b880ed1d6a43ab5"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "1dcc51f6-ba26-49e7-9ef4-2655abb2361e": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "c758c2451b787150c66e3a4d6f77c879d43a6d55af83f0a7b5d8fbf46b803e1f"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "1defdd62-cd8d-426e-a246-81a37751bb2b": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "777b89aa7d4c8bae5728bab0b42769cfa65cf092c2c7d12327385b8f62a82dd2"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "1fe3b299-fbb5-4657-a937-1d746f2c711a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "2c72225acfe36d7d8a73738e6402a19d2c2edd7b237cb483c0ff1cd2a03f6c2a"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "201200f1-a99b-43fb-88ed-f65a45c4972c": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3c04cb14853d95124c92de26841b0606c0754ec5c5ebaa8249969cfa6a6a2145"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "25224a80-5a4a-4b8a-991e-6ab390465c4f": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "55d58b78e5da7f738c16bf1f582c5833ed6b3cae8e5c443f1637debc73d7e40f"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "265db8f5-fc73-4d0d-b434-6483b56372e2": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "9c9dbc205ef2c8b42bc4e8a89996e6bae0b7071eeca10e3fb45d5e8b97b46b2d"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "2772264c-6fb9-4d9d-9014-b416eed21254": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "4e5ff48875525bf9c1c42ed303f762bf46917d95b4096aefe08068aba574e454"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "2856446a-34e6-435b-9fb5-f8f040bfa7ed": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "61548a211b657064f3f5fa31042085903bdfc11111e81e535b6a83efc90c195e"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 5
+      }
+    ],
+    "28896382-7d4f-4d50-9b72-67091901fd26": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "169ea34cde3e67d6f1816b8e83aff7e61c5c460a4857d27dde15a769a2629785"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "290aca65-e94d-403b-ba0f-62f320e63f51": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3570d85b39b3aaf54372232113a53235c6ad2ac8e31a4e4079995799770b5ffc"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "2bf78aa2-9c56-48de-b139-f169bf99cf86": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3025f747f8877ae79c60247fde20465e1a463a995fb5a90530ce84162afcf3d8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "2e1e835d-01e5-48ca-b9fc-7a61f7f11902": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "35db92f5ff0b2a7a0552fef8847a56fdd13463a363078ba92ea4615360a51089"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "31b4c719-f2b4-41f6-a9bd-fce93c2eaf62": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "2cec233c062c5fe7dc76252e8b38502d8179b81fc95fa9d16e412e9486cdab3a"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "32c5cf9c-2ef8-4e87-819e-5ccb7cd18b14": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "d5ca4ab97858a2d8286b26c7d35e0bc05fc5d43adb14a6acfab775c13dcfbd2d"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "32f4675e-6c49-4ace-80f9-97c9259dca2e": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "8dd6ae8c2247c7b2ea3fe45b54f7f510de01fc0de9d2cdfc2e7a170f34632249"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "33f306e8-417c-411b-965c-c2812d6d3f4d": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "b2471102dda931747ba2dadfc7c24d6bae2b2b2c8159676ee299a3d7889ac2fe"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "3535c8bb-3bd5-40f4-ae32-b7cd589d5372": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "98ef6755f89a03c390811b12c820029db9103a1aebf5d9bf8f85e504419aa84f"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "35df0dd8-092d-4a83-88c1-5151a804f31b": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "21ec67b35eaa24d3c3516c0bf32d5997f6ab1b78f0e0c7350eca9a699dd10c6a"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "36a8e048-d888-4f61-a8b9-0f9e2e40f317": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "f45623049c01dd2c154458d5e3e7ad9d9c13897d29cd09cc48aea8e4156e0e11"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "3838e0e3-1850-4850-a411-2e8c5ba40ba8": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "bb2a1ef16361c65ad57b81cad189efdb1bc2860805d445b732493145ad8b7fd5"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 5
+      }
+    ],
+    "397945f3-d39a-4e6f-8bcb-9656c2031438": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "99326ca610f5a63262c0a1630cc2693269a65a43cc359a0a15532f30f92b94b9"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "3a59fc81-99d3-47ea-8cd6-d48d561fca20": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e67842f4bb8e1b76ab85443a4ee7d2f9f5f83315f07d8b12fd313fe81e9f3bd8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "3a86e085-094c-412d-97ff-2439731e59cb": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "_deprecated_",
+            "pull_request": "",
+            "sha256": "8a227c09d80f4787ecef3e02690f51fd836b29aafcd6b210d859c4cd51203941"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "3b47900d-e793-49e8-968f-c90dc3526aa1": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "2b58f7d546661af50365c0264d4cbaeeb35ee4ac3a3c61d06f36444b96c6c92e"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "3bc6deaa-fbd4-433a-ae21-3e892f95624f": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "22c39d032b53df21d4a08a8e1380b3a377d035b9183f3d9292f0fa713a52dc35"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "3ecbdc9e-e4f2-43fa-8cca-63802125e582": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "216c2b34c2a6cdd95455af7c7b6e164e9e8c973b4245b1d1844c5acf095b8b82"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "403ef0d3-8259-40c9-a5b6-d48354712e49": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "b7590019645246d7699be9708da2b1097e3eddc2992de21f6eb4d87f6214321d"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "440e2db4-bc7f-4c96-a068-65b78da59bde": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "f8b5606ca65e7692023887ef4d6383c9677f3b7caff50b3f8dcc2aa0b94ffb77"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "45d273fb-1dca-457d-9855-bcb302180c21": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "9d2557c1f97bc3888957e04b5cbf2986a785231d328824540163b6f18b7ddb6f"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "4630d948-40d4-4cef-ac69-4002e29bc3db": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "c5881989c96119a681a8165897d64030c40c4c224d3f68ede9030ab1f1bc4f36"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "47f09343-8d1f-4bb5-8bb0-00c9d18f5010": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "8ad20868d912be044f16da406af7885cac27334083ff1aacae34c33a60bd1988"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "4b438734-3793-4fda-bd42-ceeada0be8f9": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3353dd92058ec6c3b5d5a8d4a0dff02a971e987382aafc74111591d6182d2e0f"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "4bd1c1af-79d4-4d37-9efa-6e0240640242": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "520630fa41ff57a7f1d514490e5ac133ecc77c6438c23c5a51d17c53a73a907e"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "4ed493fc-d637-4a36-80ff-ac84937e5461": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "0912ffe51199a5223de302e2fa4706ca0d97b6986e58bbb87fcf230065e80cf1"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "4ed678a9-3a4f-41fb-9fea-f85a6e0a0dff": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "5ded5576dbdfde915bd5cde7ed8468bae56f1c3134909b43d21292ef6caf8ebc"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "4fe9d835-40e1-452d-8230-17c147cafad8": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "c8f7cfff5fd6673aad62c7d6033dac2dafc4c580a42c4ee8e7521329e8d19cd5"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "513f0ffd-b317-4b9c-9494-92ce861f22c7": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "9aa1480883144ce0567e13917e09015db3d810bdedaa6a08ce0c4b5a9d24ba37"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "51ce96fb-9e52-4dad-b0ba-99b54440fc9a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "fd70f8725f896d6a9c4f082b1be670ee43cbf2ba9719896a942b239cad8c1f7d"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "52aaab7b-b51c-441a-89ce-4387b3aea886": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "f2c1408ce367b2c73fbbd1cbc6ed9bef791ef443c467fedd098171cb326dcd9e"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 8
+      }
+    ],
+    "53a26770-9cbd-40c5-8b57-61d01a325e14": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "8fed2aa12c6fd8c051a417db9b538641e20464259a2b2753d5356b39f8726175"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 5
+      }
+    ],
+    "54902e45-3467-49a4-8abc-529f2c8cfb80": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "25b702f18661aa230e314e4ae86c96b6c2cec0cdcddf90f8a0dd22e8119dcfbf"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "55d551c6-333b-4665-ab7e-5d14a59715ce": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "0ce0903e91131f45212ff29c422ad14081e6226b5ef0dee0b3c18dc2f04fbee8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "56557cde-d923-4b88-adee-c61b3f3b5dc3": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "c453f53d68de225f859e3ce30fd22cf210d8c09340d558f297ff064aa20508b8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 5
+      }
+    ],
+    "581add16-df76-42bb-af8e-c979bfb39a59": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "390f88f783c4f493a38b7d3c9b8ac6de3683336c9e7647c62c5656ecbf91b9c7"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "58aa72ca-d968-4f34-b9f7-bea51d75eb50": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "c6a1f645e35d4b8f95ba780341ba44525b04d894145339226da9e8947646f63a"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "58bc134c-e8d2-4291-a552-b4b3e537c60b": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3d0004437f09de9eecfbac26db052ce24903e52eb4c73c711fa391cd6fe20c4b"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "5a14d01d-7ac8-4545-914c-b687c2cf66b3": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3a601dd195edb40a8d79e89d9daaa49f34d0041c25ad4631996ca17ae15a1d0d"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "5aee924b-6ceb-4633-980e-1bde8cdb40c5": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "bd50a6c73807253ad47a4a1233d81f4c0b007bb962e67a48156c193902ac196e"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "5bb4a95d-5a08-48eb-80db-4c3a63ec78a8": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "84312834bd188df4117237dd0eac17acfe56ea9eaaf769d8d30fdb737233f2a9"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "5cd55388-a19c-47c7-8ec4-f41656c2fded": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "b1b5eacf315347c27f259df6172ac9307c3a650812b5b2827cf55a640fcb0635"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "5d1d6907-0747-4d5d-9b24-e4a18853dc0a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "333466b22d93f30ef27b8c7c4c06c7d52c95f5a5d8043ed8ceaf5021466d7bb6"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "610949a1-312f-4e04-bb55-3a79b8c95267": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3e16aabf9d033c18488b6af334d739a9dd17f53f7ec2cf4423c57ec96d65c313"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "622ecb68-fa81-4601-90b5-f8cd661e4520": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "351e0ebeac948b3d6041625a279f16debdc3dd8aa1ec8cc9cbdea863af3c8450"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "63e65ec3-43b1-45b0-8f2d-45b34291dc44": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "bf2fb0c44e6d560a0821bc70fad9e41274b511cdab2e87dd26780d7fa4137a6a"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "665e7a4f-c58e-4fc6-bc83-87a7572670ac": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e46e26bccf24b913d6ea1dfca5767325651cf08ba069b6653b06cdf9421f83f2"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "66883649-f908-4a5b-a1e0-54090a1d3a32": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "a630445d94fa1902d7ad1c45aa1c9d6a9b10081a17b815662e3247787e133178"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "68113fdc-3105-4cdd-85bb-e643c416ef0b": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "11237e7271d40e6753d629880da6f20a8a1a0a6b76236b6702308c5e6ded0e79"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "6839c821-011d-43bd-bd5b-acff00257226": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "02a10084a9d9f36146677568e0ee89bbd95012ac1bdddf09e5561ecf28e12ee6"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "68921d85-d0dc-48b3-865f-43291ca2c4f2": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "9bc213db370d6b16ed41c9f33fa1372c70cf78a42a796d2cffbf715eec4eda0e"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "689b9d57-e4d5-4357-ad17-9c334609d79a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "fa3cce5550793c63a47ced4d2c2af32bef5bed8a6df6e474647f3b3d3f92af12"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "68d56fdc-7ffa-4419-8e95-81641bd6f845": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "f7acae94f60a4ba3aa9e369d15da993f193a315a0a902754fff7895009245d0d"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "69c251fb-a5d6-4035-b5ec-40438bd829ff": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "c150a660872672a018d31c7acff85b4bc105d8e4b06d91a04631744de39b5fc8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "6a8ab9cc-4023-4d17-b5df-1a3e16882ce7": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "adfdb5aed82aa7eb8c3efd68121bf84ab1ad94c2c7fa720b5f5a8b7d48e6a560"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "6aace640-e631-4870-ba8e-5fdda09325db": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "5b37fd6b6862c48912f66b342955a62380fda8688519371003b5ef4d9f3c9607"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "6ea41894-66c3-4df7-ad6b-2c5074eb3df8": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "33ee9c1ac2d747ee8d93df0541d04550cfc02eb2097cca74458b28bddccc4b40"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "6ea55c81-e2ba-42f2-a134-bccf857ba922": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "738a4ec5ba1a770c800b86bebcd3ab9acee8c45360f6bcb4fd898b33d5055def"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "71c5cb27-eca5-4151-bb47-64bc3f883270": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "8ca8c1ae6b303f38d993b30240d9c06e196c4fb280baf60f4fd908b4b10b00ac"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "7405ddf1-6c8e-41ce-818f-48bea6bcaed8": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "eb9534a984e0912a795cbfdd0a814490b16cb9dfe22def7c96295d22c5da0fd9"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "76fd43b7-3480-4dd9-8ad7-8bd36bfad92f": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "847704c233f8fa0242a1880000b62960577ceb70d92429e999cbb8eb0ccda316"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "7b08314d-47a0-4b71-ae4e-16544176924f": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e7600253fda0b1f4a313fe42fc2d80af2bd6f49573464d74777a86d8b83ca0ba"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "7b8bfc26-81d2-435e-965c-d722ee397ef1": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "cd3b13af9a85c0b1bf83b5726a672e0716572dcec863b016a92700b94b631267"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "7bcbb3ac-e533-41ad-a612-d6c3bf666aba": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "9243abd043afe9e1184acc273a65b74fe25196c57c065cb108bf9c45b71a5cf9"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 5
+      }
+    ],
+    "7f370d54-c0eb-4270-ac5a-9a6020585dc6": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "82928f6989a905532c7891f8bb3480469be21117a906751d0aec076435a267ca"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "852c1f19-68e8-43a6-9dce-340771fe1be3": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "6151d817ba2a6e3c9e8b013e3386c79d99841fa23d379b8b2073a15e479d89cf"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "871ea072-1b71-4def-b016-6278b505138d": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "a77227b18e0f725258477bb0a9b6740a937af96a25a774b78ec7aa3417bea40a"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "891cb88e-441a-4c3e-be2d-120d99fe7b0d": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "94c765469b92b894aefd15ba91037f5d1cd700ee24d981e04660a3308addef5c"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "897dc6b5-b39f-432a-8d75-d3730d50c782": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "08931a65a5d1f68796983e84f29e3ac235d3de1287271cd2b761fdc0a2b5ef47"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "89f9a4b0-9f8f-4ee0-8823-c4751a6d6696": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "7ea4ec3ec90a686daaa3ce75369cda9c418a8a359c48f1dd61708cf690394ef3"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "8a1b0278-0f9a-487d-96bd-d4833298e87a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "f11706016ecde48563636d3252075546d0f041227772312deb068cc9f93fe3cf"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "8c37dc0e-e3ac-4c97-8aa0-cf6a9122de45": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3db7b7a659567cb7fc276f7a68b5a430cbdfa9c8273f5dc6379f396ff7232ab6"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "8c81e506-6e82-4884-9b9a-75d3d252f967": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "fb62d656340b23c3183279fbe1754cda316621b0882a085dc688a947f163e092"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "8f919d4b-a5af-47ca-a594-6be59cd924a4": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3eaa4d62ac095ca316af4fa478cd8f1873274894ba22eff7ab4c4cf5281625e8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "931e25a5-0f5e-4ae0-ba0d-9e94eff7e3a4": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "554a73c4e5509df63ec1e29fd5369f3ffd5056ffdfb78fcbefbff197265b9405"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "93b22c0a-06a0-4131-b830-b10d5e166ff4": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e1ac8bac9b64eb9e2db984a5edccf15e5d9ac9459dfb312020e2650a6a7430c4"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "93c1ce76-494c-4f01-8167-35edfb52f7b1": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "2f32e211246f2545e7960316478903290c231a50db0d0c18e578f15bd30574ec"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "954ee7c8-5437-49ae-b2d6-2960883898e9": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "4d7f7c10cd0e604c8f3912ed67bb3de4c3a39c7fe2e4317b89deb2761f326d3a"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "97aba1ef-6034-4bd3-8c1a-1e0996b27afa": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "97b4f352e221ba8facaa3e8f0a0755e94456aff4d612f9fae1bf576ed6d90c37"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "97fc44d3-8dae-4019-ae83-298c3015600f": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "7173db6dbc246e9018146364d91185ceebff0b8e618681a9d93f36ff29b6ac37"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "9a5b4e31-6cde-4295-9ff7-6be1b8567e1b": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "6000ecda624924ead9bb319848b90eef204817b505a7158b339cd2914ce7d763"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "9aa0e1f6-52ce-42e1-abb3-09657cee2698": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "6723abe206f7706d63272f8364aa9e5e53358101732c23f4689f319816fae3ba"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "9b6813a1-daf1-457e-b0e6-0bb4e55b8a4c": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e6a15561141ba47e5ebdb3e643781f5b442edb53fe2d1f063576e9176c1224f7"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "9c260313-c811-4ec8-ab89-8f6530e0246c": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "221a8f23a3f8ed54cf4d1c8ddee27ddb6f3ede0a40ff938506f76dd9f4b18a49"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "9ccf3ce0-0057-440a-91f5-870c6ad39093": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "69c51605d374f48b535fcb2aeff74d436b5b65e05bf6692eed1c314d950e35de"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "9d110cb3-5f4b-4c9a-b9f5-53f0a1707ae1": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "cfd97417e4e6316b4b1ebe22b53b6b8a0d055e9f1ca56bce55b0707450b4ffb6"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "9d110cb3-5f4b-4c9a-b9f5-53f0a1707ae2": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "4ac75b4d93e76706d4612154326539efe0c26e9fd4db7bf72b7891c11fc5e2d3"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "9d110cb3-5f4b-4c9a-b9f5-53f0a1707ae3": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "fe3ec0b5e7000c112ce75445ebe1a42cec2406ff713d7bddbb7c5051258571b8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "9d110cb3-5f4b-4c9a-b9f5-53f0a1707ae4": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "ac182c13b1fd4ac9cc8a247ea5e57b0de84d5023f667c2dc8bb9463cde3e6371"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "9d110cb3-5f4b-4c9a-b9f5-53f0a1707ae5": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "8e7574ebbe22543584c47b199b2f4d06471c0c7e147aae365703e4c4e1f310bb"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "9d110cb3-5f4b-4c9a-b9f5-53f0a1707ae6": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "009ab97245ca01985aab1c325d7c20a3298d6919d492059b54daaa7134baec43"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "9d110cb3-5f4b-4c9a-b9f5-53f0a1707ae9": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e348d23a975075cc0616ed82b6752ccf53a6a2d7870708dc791e53d5f0f23163"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 4
+      }
+    ],
+    "a13167f1-eec2-4015-9631-1fee60406dcf": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "ec9a1d4be8b3a5d0686570036819627849fdecd010a5f077d66532d57e3688db"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "a3ea12f3-0d4e-4667-8b44-4230c63f3c75": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "95c353d6fede71a4c7b4ffc71ce3565b7e13e260d5860476d67f1cdb9e1ac747"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "a4ec1382-4557-452b-89ba-e413b22ed4b8": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "6aa31a658ac329b3374a740a6ac3b2abee15417d680284d6d9aab134e13c585c"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 5
+      }
+    ],
+    "a624863f-a70d-417f-a7d2-7a404638d47f": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "ebb41590372bcada07077c2e1a5b63e4b34ad0bc28a26170100792183270dc76"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "a7ccae7b-9d2c-44b2-a061-98e5946971fa": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "57132c55205fffcb3f6622e72491cfa5497afc2bc90741508441d349f60e37a5"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "a7e7bfa3-088e-4f13-b29e-3986e0e756b8": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "5e135ba00338fc86bc0edf07be2b23910c88baf1f91f1dd72259d2f92d83d764"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "a9b05c3b-b304-4bf9-970d-acdfaef2944c": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "2583ad70864c291782e795d2c7e55ba1c26326ac2cedda0418a8fb012eb735b5"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "aa9a274d-6b53-424d-ac5e-cb8ca4251650": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "22bd2fb90b07419753a4810553268c1171e5bf9e2ab7818fd11d154ccabb1e03"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "ab75c24b-2502-43a0-bf7c-e60e662c811e": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "beed28cb2efbd962d9573af2be88ec73a09d29de0c6e98d23093db94aa00e255"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "ac5012b8-8da8-440b-aaaf-aedafdea2dff": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "7a3432cc8ea24f6e2960e1379ea7befce77b101c799d7ba480c253d92e0ea4f2"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "acd611f3-2b93-47b3-a0a3-7723bcc46f6d": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "b1fb842c7966d73dfbcba656e2deed9c3868e46f3a1470fdb890b1ead710bb60"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "acf738b5-b5b2-4acc-bad9-1e18ee234f40": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "7fba11b2c12529691253fc48663811410a081ac8372ceac41a2636a22b9de2d8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "afcce5ad-65de-4ed2-8516-5e093d3ac99a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "4309fa0eaa269b083403291e24905cedab3724030d6eb258d0420fef6f1ab2cb"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "b0046934-486e-462f-9487-0d4cf9e429c6": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "036f3e7f9be396c953172509a4a62dfecbb5652ebafc6372c1dd982f724d9a28"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "b25a7df2-120a-4db2-bd3f-3e4b86b24bee": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e4502d0b4fe0bd93da91a43e737fc424022d94ef9e39d1eaf19bc0e60d4216fa"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "b29ee2be-bf99-446c-ab1a-2dc0183394b8": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "5a396f3f0509db14d138bab2b6eaf0ea0cbce44f00c775b88d7a5c4859c5fccd"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "b41a13c6-ba45-4bab-a534-df53d0cfed6a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "4c3e91af0052843febd139c44121a5b0826a827f435a3b27091e5ef2d9be09ce"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "b5ea4bfe-a1b2-421f-9d47-22a75a6f2921": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "22d7414faa2b23f6c29d39e5487d5b9f2036626859658e30b1a7a8950839772f"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "b64b183e-1a76-422d-9179-7b389513e74d": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "124fe96d16930947a7bcc704743c01413e613d398b03cc7c7845c0e3b58b661c"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "b83a7e96-2eb3-4edf-8346-427b6858d3bd": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "5cab3bdcc7a842718da420b4d35bb1073e14d8102f10f2119b1627989afcd4c8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "b86afe07-0d98-4738-b15d-8d7465f95ff5": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "6e0cfbf39e7c4d244a0367f3c25ac963dc01326e763d6ac69bd104f4bc2d3df8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "b90cdde7-7e0d-4359-8bf0-2c112ce2008a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "72d23d1a74f8fe1866ad5ecaf6e4acfbd31102c03da4319e43bd8e944531ad5a"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "b9960fef-82c6-4816-befa-44745030e917": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "fd8f656f94e01709b228ab738191c6313f708b0963780dffef8783f76d696cfa"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "baa5d22c-5e1c-4f33-bfc9-efa73bb53022": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "436a3cf5092ab41efb0e9ee5afac6e6e69d152d7cc6637ff5f1d52797c0c0bc2"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "bd7eefee-f671-494e-98df-f01daf9e5f17": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "152043af6244517c4934d92da892762824bf93dac042c240b5590681f2d749c3"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "c0429aa8-9974-42da-bfb6-53a0a515a145": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "c2606d06fb46d27eaf059cabf9a87e394d75d418dc15d9233f5cff585ed7f05f"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "c25e9c87-95e1-4368-bfab-9fd34cf867ec": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "9950c96460d23c631053a76db3a92c08ec40c797372e11cb55b1aba0610fbb2c"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "c2d90150-0133-451c-a783-533e736c12d7": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "11d1aa9ba2b563af0a6012d6d0d717a123e849824dfe4f984551a1fc0fe6e62e"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "c4210e1c-64f2-4f48-b67e-b5a8ffe3aa14": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "6847ff1bd8dc49b2c6b2937725f9183423c229bac6141478ebddc849d4e7b5e8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "c5ce48a6-7f57-4ee8-9313-3d0024caee10": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "8165a08069e866485f61d1bc600aa007c030c13674688443501e9708e6d21899"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "c5dc3223-13a2-44a2-946c-e9dc0aa0449c": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "55441d09788d8f9d4d38b61f4542a2dfb63dd8721aabea5c5e12dc061b660862"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "c6453e73-90eb-4fe7-a98c-cde7bbfc504a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "cb83a810b1fe93859610deca51084b0d14bab28a495d8b33c32fea9e3c36588d"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "c7ce36c0-32ff-4f9a-bfc2-dcb242bf99f9": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "7a32947f8042183dc453a4749588021b038372c35cd3355fab0a9af8f3e0a334"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "c82c7d8f-fb9e-4874-a4bd-fd9e3f9becf1": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "37600d772bd7b3be3bafc7273d8c3eaf79f67f852f7f2078c735df55ba2fd5d8"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "cc16f774-59f9-462d-8b98-d27ccd4519ec": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "0024b2249d57efca20756e0019306447942a28ba395fa405c797edee88fcb09b"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 5
+      }
+    ],
+    "ccc55af4-9882-4c67-87b4-449a7ae8079c": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "05d153e5911b7fd7ee252b2680d3103d5bf0f30078da1dd99720f4c5ee8330a5"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "ce64d965-6cb0-466d-b74f-8d2c76f47f05": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "51e4a9d1aa6a982299ab8dcd4fc2eb00ec0611677e45e25821896b57f55e512f"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "cff92c41-2225-4763-b4ce-6f71e5bda5e6": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "1465dbd3c2949416b9afc58540da8eea590ecdc7539076f0c44b22a444fbb58d"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "d0e159cf-73e9-40d1-a9ed-077e3158a855": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "ec7d6880ffcf7d71dafabe9a6dfe78b5bcfdff71abadd010d8a75b0f05c574af"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "d331bbe2-6db4-4941-80a5-8270db72eb61": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "25d06b46112f2192e4551cb7bb328e25b4094723ec650ccd34321d1a30fe5f43"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "d563aaba-2e72-462b-8658-3e5ea22db3a6": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "befc88a6c59abd49be506ad5f163643343ebae8ebf1baabae911e626c1dd6b40"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "d61cbcf8-1bc1-4cff-85ba-e7b21c5beedc": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "334020f9168c313556443cccfee24024c969018fb0ce5cb81d80e3c783dadbb6"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "d72e33fc-6e91-42ff-ac8b-e573268c5a87": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "817efee97185b7beba904e663eb5cd283de6e50263b020657ea711c4342453dd"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "dc9c1f74-dac3-48e3-b47f-eb79db358f57": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "ca90eea110b9788850029ed854b03c8e99bd34a4f1b2f90404112777e8c9d8c5"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "de9bd7e0-49e9-4e92-a64d-53ade2e66af1": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "32e99d14190f44e196860a6c7041cd466cb8f146a4aeecafe9ba800b31ffd28f"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "e2f9fdf5-8076-45ad-9427-41e0e03dc9c2": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "a24504e2df9d86b4164e78f9fe28a821f921895544e10ece44b73860c515f384"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "e3343ab9-4245-4715-b344-e11c56b0a47f": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "5c4886ab5b64e1f7b4281c7c476c4fed0108e8e25124267a193ad04628aa76f1"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "e3cf38fa-d5b8-46cc-87f9-4a7513e4281d": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "71f662fc57035d6b98a4139c5a6d7a59d035eab5dc87b30d8ac85682aa5360ab"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "e7125cea-9fe1-42a5-9a05-b0792cf86f5a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3eaedfcfab0e312534bffe67896561095ed208f71f6403c720e8b014cde4db80"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "e8571d5f-bea1-46c2-9f56-998de2d3ed95": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "c74520f69691bd4e3c2848669a4733c841bb7f17ff9d3b85b1bfbea707e6fb8e"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "e86da94d-e54b-4fb5-b96c-cecff87e8787": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "eef0c320c16d6e91e269b89dd2f46958c029b4f8a585c3e20b84129737785f2f"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "e94262f2-c1e9-4d3f-a907-aeab16712e1a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "7ff81420a6fe67251895f4228284e81302e9a5013bd98e77aa0b55fd32414b10"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "ebb200e8-adf0-43f8-a0bb-4ee5b5d852c6": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "3f4e17ff489dc63196c15d8c3c33b24b4e04cfa39003ebde695c223053bffb35"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "ebf1adea-ccf2-4943-8b96-7ab11ca173a5": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "bc30947645ccb255bab9e714d47bf0b47272aad67d15ee63b7751b017ded7486"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "ebfe1448-7fac-4d59-acea-181bd89b1f7f": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "68d8adf516e67101d3336112e2279b82f256242021a23e0b9bf26abd5ac6e4ac"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "eda499b8-a073-4e35-9733-22ec71f57f3a": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "f039242a0bfdf9096f7e365a5f8c6d21b8096a7bdb90e63e2e97709720c12c14"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "edf8ee23-5ea7-4123-ba19-56b41e424ae3": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e231fe26c0339b78e757ac83b723aed5c876d725aeddd93df7aaddadff55f422"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "ef862985-3f13-4262-a686-5f357bbb9bc2": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "1cae23e0af76735fbc7248df73a5ba48661f9c1aa7058e7a8fbdd3805ef93dc5"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 5
+      }
+    ],
+    "f036953a-4615-4707-a1ca-dc53bf69dcd5": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "cce21f4804b8c3729a8d1d764250f899e1b5d1eb710793b5a0fb288f98acdf7d"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 3
+      }
+    ],
+    "f2f46686-6f3c-4724-bd7d-24e31c70f98f": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "68a93bcb70711f01e3934528618c556797ca7a89ba3e222eee09987de89c9f7c"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "f3475224-b179-4f78-8877-c2bd64c26b88": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "854287c8596339d93681d05ae365350bfe6480c95ad094ea02889397b6dfd87c"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "f44fa4b6-524c-4e87-8d9e-a32599e4fb7c": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "2698226fcf0698af5ae297a59294d984748ab9bf56f6942ef8ef66ab7abd7d98"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "f545ff26-3c94-4fd0-bd33-3c7f95a3a0fc": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "9dca56bde0a8b3c3f8bb635605e6b14c9e8231b015518fedfffaf7d09757b84e"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "f675872f-6d85-40a3-b502-c0d2ef101e92": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "26702183a4ae2612d551cd2b88c1db5d3a8ed661e7c83e73b45843d86048c42b"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "f7c4dc5a-a58d-491d-9f14-9b66507121c0": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "7e09fe3bd0cab281158641384d103a754146b13af093685fe73f361179ab94bf"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "fa01341d-6662-426b-9d0c-6d81e33c8a9d": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "41fdabd2c604cc6c467e6400961676946db6b12a17a47dbcec91d6e74257f714"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "fb02b8d3-71ee-4af1-bacd-215d23f17efa": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "a51d38af2352f532ffde0b5a78f483e86c94cf27edd3fa610f7db5051435f1ad"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 7
+      }
+    ],
+    "fc7c0fa4-8f03-4b3e-8336-c5feab0be022": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "e4b54756acaaa9be17c889a16b6a05d5a392031c531d9ab2e6c1ea7e949f8b96"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 2
+      }
+    ],
+    "fd4a992d-6130-4802-9ff8-829b89ae801f": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "363fe57cca3c26dc31ef4849e9d5ca5281ec47a8d2d7260dde1e16a8131eb6c3"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "fd70c98a-c410-42dc-a2e3-761c71848acf": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "4acc0021da72b329f72eb25528386a9b7ee3c56f082484c8a10f4c9f906e62ce"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ],
+    "fd7a6052-58fa-4397-93c3-4795249ccfa2": [
+      {
+        "changes": [
+          {
+            "date": "2021/03/03",
+            "message": "some arbitrary change",
+            "pull_request": "",
+            "sha256": "6949e066b8a894d4d04b9bd71eb8d414efa7138ad4f07f1c1784e4387e494805"
+          }
+        ],
+        "date": "2021/03/03",
+        "minimum_kibana_version": "7.13",
+        "rule_version": 6
+      }
+    ]
+  }
+}

@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/02/18"
 maturity = "production"
-updated_date = "2020/12/09"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "c2c31e7d78f6434fa9cd3db2dd06ab36a1a81340338a41557e7b16a7a1dc7c9d"
+
 
 [rule]
 author = ["Elastic"]
@@ -25,8 +32,7 @@ tags = ["Elastic", "Host", "Linux", "Threat Detection", "Persistence"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and process.name:(bash or dash) and
-  user.name:(apache or nginx or www or "www-data")
+event.category:process and event.type:(start or process_started) and process.name:(bash or dash) and user.name:(apache or nginx or www or "www-data")
 '''
 
 
@@ -40,6 +46,7 @@ reference = "https://attack.mitre.org/techniques/T1505/"
 id = "T1505.003"
 name = "Web Shell"
 reference = "https://attack.mitre.org/techniques/T1505/003/"
+
 
 
 [rule.threat.tactic]

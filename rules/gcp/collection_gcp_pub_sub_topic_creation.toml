@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/09/23"
 maturity = "production"
-updated_date = "2020/12/16"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "1ee3cc3dc635379279ab4ec164112e0138896d5e16f973d4ca0f53bc40834266"
+
 
 [rule]
 author = ["Elastic"]

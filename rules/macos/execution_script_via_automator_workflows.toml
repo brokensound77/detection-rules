@@ -1,13 +1,21 @@
 [metadata]
 creation_date = "2020/12/23"
 maturity = "production"
-updated_date = "2020/12/23"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_rule_created_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "f686e08dd6c6e0ebd1349f4f5ec01c6bde8683f2089b48417bf4387eac720e83"
+
 
 [rule]
 author = ["Elastic"]
 description = """
-Identifies the execution of the Automator Workflows process followed by a network connection from it's XPC service. Adversaries may drop a custom workflow template that hosts
-malicious JavaScript for Automation (JXA) code as an alternative to using osascript.
+Identifies the execution of the Automator Workflows process followed by a network connection from it's XPC service.
+Adversaries may drop a custom workflow template that hosts malicious JavaScript for Automation (JXA) code as an
+alternative to using osascript.
 """
 from = "now-9m"
 index = ["auditbeat-*", "logs-endpoint.events.*"]
@@ -40,3 +48,4 @@ reference = "https://attack.mitre.org/techniques/T1059/"
 id = "TA0002"
 name = "Execution"
 reference = "https://attack.mitre.org/tactics/TA0002/"
+

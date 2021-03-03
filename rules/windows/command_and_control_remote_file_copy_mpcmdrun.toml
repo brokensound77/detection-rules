@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/09/03"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "cb83a810b1fe93859610deca51084b0d14bab28a495d8b33c32fea9e3c36588d"
+
 
 [rule]
 author = ["Elastic"]
@@ -24,9 +31,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Command and Control"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  (process.name:MpCmdRun.exe or process.pe.original_file_name:MpCmdRun.exe) and
-  process.args:(("-DownloadFile" or "-downloadfile") and "-url" and "-path")
+event.category:process and event.type:(start or process_started) and (process.name:MpCmdRun.exe or process.pe.original_file_name:MpCmdRun.exe) and process.args:(("-DownloadFile" or "-downloadfile") and "-url" and "-path")
 '''
 
 

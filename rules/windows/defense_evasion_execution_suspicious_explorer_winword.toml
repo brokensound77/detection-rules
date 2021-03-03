@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/09/03"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "d455d85f9daa746a4696b104351f89e3768b78d49f7cd8c5ea0805a224477883"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,14 +29,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.pe.original_file_name:(WinWord.exe or EXPLORER.EXE or w3wp.exe or DISM.EXE) and
-  not (process.name:(winword.exe or WINWORD.EXE or explorer.exe or w3wp.exe or Dism.exe) or
-             process.executable:("C:\Windows\explorer.exe" or
-                                  C\:\\Program?Files\\Microsoft?Office\\root\\Office*\\WINWORD.EXE or
-                                  C\:\\Program?Files?\(x86\)\\Microsoft?Office\\root\\Office*\\WINWORD.EXE or
-                                 "C:\Windows\System32\Dism.exe" or "C:\Windows\SysWOW64\Dism.exe" or
-                                 "C:\Windows\System32\inetsrv\w3wp.exe"))
+event.category:process and event.type:(start or process_started) and process.pe.original_file_name:(WinWord.exe or EXPLORER.EXE or w3wp.exe or DISM.EXE) and not (process.name:(winword.exe or WINWORD.EXE or explorer.exe or w3wp.exe or Dism.exe) or process.executable:("C:\Windows\explorer.exe" or C\:\\Program?Files\\Microsoft?Office\\root\\Office*\\WINWORD.EXE or C\:\\Program?Files?\(x86\)\\Microsoft?Office\\root\\Office*\\WINWORD.EXE or "C:\Windows\System32\Dism.exe" or "C:\Windows\SysWOW64\Dism.exe" or "C:\Windows\System32\inetsrv\w3wp.exe"))
 '''
 
 

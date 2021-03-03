@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/11/03"
 maturity = "production"
-updated_date = "2021/01/21"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "036f3e7f9be396c953172509a4a62dfecbb5652ebafc6372c1dd982f724d9a28"
+
 
 [rule]
 author = ["Elastic"]
@@ -39,7 +46,9 @@ name = "Timestomp"
 reference = "https://attack.mitre.org/techniques/T1070/006/"
 
 
+
 [rule.threat.tactic]
 id = "TA0005"
 name = "Defense Evasion"
 reference = "https://attack.mitre.org/tactics/TA0005/"
+

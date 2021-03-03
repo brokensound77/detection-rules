@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/04/17"
 maturity = "production"
-updated_date = "2020/11/03"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "14c8d3e3d6e63fce634dc9680d63cdc0a358e115c8e11d3335a88ddf7debb768"
+
 
 [rule]
 author = ["Elastic"]
@@ -24,8 +31,7 @@ tags = ["Elastic", "Host", "Linux", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.name:(base64 or base64plain or base64url or base64mime or base64pem)
+event.category:process and event.type:(start or process_started) and process.name:(base64 or base64plain or base64url or base64mime or base64pem)
 '''
 
 
@@ -40,6 +46,7 @@ reference = "https://attack.mitre.org/techniques/T1140/"
 id = "T1027"
 name = "Obfuscated Files or Information"
 reference = "https://attack.mitre.org/techniques/T1027/"
+
 
 [rule.threat.tactic]
 id = "TA0005"

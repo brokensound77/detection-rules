@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/05/20"
 maturity = "production"
-updated_date = "2020/10/26"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "ced102db5634a4ef32a1acd0cf1f2d7625ad5328c33910a5bcde4079f5df0613"
+
 
 [rule]
 author = ["Elastic"]
@@ -52,9 +59,9 @@ reference = "https://attack.mitre.org/techniques/T1133/"
 id = "TA0003"
 name = "Persistence"
 reference = "https://attack.mitre.org/tactics/TA0003/"
-
 [[rule.threat]]
 framework = "MITRE ATT&CK"
+
 [rule.threat.tactic]
 id = "TA0005"
 name = "Defense Evasion"

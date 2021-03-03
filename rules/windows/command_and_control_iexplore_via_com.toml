@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/11/28"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "b1fb842c7966d73dfbcba656e2deed9c3868e46f3a1470fdb890b1ead710bb60"
+
 
 [rule]
 author = ["Elastic"]
@@ -51,3 +58,4 @@ reference = "https://attack.mitre.org/techniques/T1071/"
 id = "TA0011"
 name = "Command and Control"
 reference = "https://attack.mitre.org/tactics/TA0011/"
+

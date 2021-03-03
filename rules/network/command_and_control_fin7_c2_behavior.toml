@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/07/06"
 maturity = "production"
-updated_date = "2020/12/09"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "3fa7153a86cbc2ace7d71cfed53816495b74a6d6ee0094365420c17fa95c2957"
+
 
 [rule]
 author = ["Elastic"]
@@ -30,8 +37,7 @@ tags = ["Elastic", "Network", "Threat Detection", "Command and Control"]
 type = "query"
 
 query = '''
-event.category:(network OR network_traffic) AND type:(tls OR http) AND network.transport:tcp
-AND destination.domain:/[a-zA-Z]{4,5}\.(pw|us|club|info|site|top)/ AND NOT destination.domain:zoom.us
+event.category:(network OR network_traffic) AND type:(tls OR http) AND network.transport:tcp AND destination.domain:/[a-zA-Z]{4,5}\.(pw|us|club|info|site|top)/ AND NOT destination.domain:zoom.us
 '''
 
 
@@ -50,6 +56,7 @@ reference = "https://attack.mitre.org/techniques/T1568/"
 id = "T1568.002"
 name = "Domain Generation Algorithms"
 reference = "https://attack.mitre.org/techniques/T1568/002/"
+
 
 
 [rule.threat.tactic]

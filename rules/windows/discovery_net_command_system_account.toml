@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/03/18"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "61548a211b657064f3f5fa31042085903bdfc11111e81e535b6a83efc90c195e"
+
 
 [rule]
 author = ["Elastic"]
@@ -21,9 +28,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Discovery"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  (process.name:(whoami.exe or net.exe) or process.name:net1.exe and not process.parent.name:net.exe) and
-  user.name:SYSTEM
+event.category:process and event.type:(start or process_started) and (process.name:(whoami.exe or net.exe) or process.name:net1.exe and not process.parent.name:net.exe) and user.name:SYSTEM
 '''
 
 

@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/19"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "32e99d14190f44e196860a6c7041cd466cb8f146a4aeecafe9ba800b31ffd28f"
+
 
 [rule]
 author = ["Elastic"]
@@ -18,9 +25,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.parent.pid:4 and
-  not process.executable:(Registry or MemCompression or "C:\Windows\System32\smss.exe")
+event.category:process and event.type:(start or process_started) and process.parent.pid:4 and not process.executable:(Registry or MemCompression or "C:\Windows\System32\smss.exe")
 '''
 
 

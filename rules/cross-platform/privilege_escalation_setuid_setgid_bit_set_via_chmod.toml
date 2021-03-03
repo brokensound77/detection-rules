@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/04/23"
 maturity = "production"
-updated_date = "2021/01/19"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "f11706016ecde48563636d3252075546d0f041227772312deb068cc9f93fe3cf"
+
 
 [rule]
 author = ["Elastic"]
@@ -25,8 +32,7 @@ tags = ["Elastic", "Host", "Linux", "macOS", "Threat Detection", "Privilege Esca
 type = "query"
 
 query = '''
-event.category:process AND event.type:(start OR process_started) AND process.name:chmod AND
-  process.args:("+s" OR "u+s" OR /4[0-9]{3}/ OR g+s OR /2[0-9]{3}/)
+event.category:process AND event.type:(start OR process_started) AND process.name:chmod AND process.args:("+s" OR "u+s" OR /4[0-9]{3}/ OR g+s OR /2[0-9]{3}/)
 '''
 
 

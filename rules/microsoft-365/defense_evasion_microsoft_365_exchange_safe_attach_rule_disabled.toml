@@ -1,14 +1,21 @@
 [metadata]
 creation_date = "2020/11/19"
 maturity = "production"
-updated_date = "2020/12/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "597de1037b8e935e00d29b0083b61f2f93e7ce6fab04637d0664a0c7b5a31b9a"
+
 
 [rule]
 author = ["Elastic"]
 description = """
-Identifies when a safe attachment rule is disabled in Microsoft 365. Safe attachment rules can extend malware protections
-to include routing all messages and attachments without a known malware signature to a special hypervisor environment.
-An adversary or insider threat may disable a safe attachment rule to exfiltrate data or evade defenses.
+Identifies when a safe attachment rule is disabled in Microsoft 365. Safe attachment rules can extend malware
+protections to include routing all messages and attachments without a known malware signature to a special hypervisor
+environment. An adversary or insider threat may disable a safe attachment rule to exfiltrate data or evade defenses.
 """
 false_positives = [
     """

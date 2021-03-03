@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/09/03"
 maturity = "production"
-updated_date = "2020/12/09"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "cd02c225183b6d5187a07bf67653afe3372de17dde89842143f115477aca31d7"
+
 
 [rule]
 anomaly_threshold = 25
@@ -27,8 +34,6 @@ rule_id = "37b0816d-af40-40b4-885f-bb162b3c88a9"
 severity = "low"
 tags = ["Elastic", "Host", "Linux", "Threat Detection", "ML"]
 type = "machine_learning"
-
-
 [[rule.threat]]
 framework = "MITRE ATT&CK"
 [[rule.threat.technique]]
@@ -39,6 +44,7 @@ reference = "https://attack.mitre.org/techniques/T1547/"
 id = "T1547.006"
 name = "Kernel Modules and Extensions"
 reference = "https://attack.mitre.org/techniques/T1547/006/"
+
 
 
 [rule.threat.tactic]

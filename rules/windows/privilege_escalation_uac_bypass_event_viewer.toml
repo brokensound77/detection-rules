@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/03/17"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "2cec233c062c5fe7dc76252e8b38502d8179b81fc95fa9d16e412e9486cdab3a"
+
 
 [rule]
 author = ["Elastic"]
@@ -21,9 +28,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Privilege Escalation"
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.parent.name:eventvwr.exe and
-  not process.executable:("C:\Windows\SysWOW64\mmc.exe" or "C:\Windows\System32\mmc.exe")
+event.category:process and event.type:(start or process_started) and process.parent.name:eventvwr.exe and not process.executable:("C:\Windows\SysWOW64\mmc.exe" or "C:\Windows\System32\mmc.exe")
 '''
 
 

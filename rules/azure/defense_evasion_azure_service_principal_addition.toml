@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/12/14"
 maturity = "production"
-updated_date = "2020/12/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "c22c57b1e5bd8d490cfd1c79ad555b735f040598a0ef8bfa5789210cb476f5bf"
+
 
 [rule]
 author = ["Elastic"]
@@ -49,6 +56,7 @@ reference = "https://attack.mitre.org/techniques/T1550/"
 id = "T1550.001"
 name = "Application Access Token"
 reference = "https://attack.mitre.org/techniques/T1550/001/"
+
 
 
 [rule.threat.tactic]

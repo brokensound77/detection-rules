@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/10/19"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "f7acae94f60a4ba3aa9e369d15da993f193a315a0a902754fff7895009245d0d"
+
 
 [rule]
 author = ["Elastic"]
@@ -38,6 +45,7 @@ reference = "https://attack.mitre.org/techniques/T1548/"
 id = "T1548.002"
 name = "Bypass User Access Control"
 reference = "https://attack.mitre.org/techniques/T1548/002/"
+
 
 
 [rule.threat.tactic]

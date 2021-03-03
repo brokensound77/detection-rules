@@ -1,13 +1,20 @@
 [metadata]
 creation_date = "2020/12/20"
 maturity = "production"
-updated_date = "2020/12/20"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_rule_created_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "6e7614547b9f4493ac51ddde52dd5a3f7c692dd0da9656ff36af178be9a0413c"
+
 
 [rule]
 author = ["Elastic"]
 description = """
-Identifies the use of the grep command to discover known third-party macOS and Linux security tools, such as
-Antivirus or Host Firewall details.
+Identifies the use of the grep command to discover known third-party macOS and Linux security tools, such as Antivirus
+or Host Firewall details.
 """
 from = "now-9m"
 index = ["logs-endpoint.events.*", "auditbeat-*"]
@@ -21,38 +28,7 @@ tags = ["Elastic", "Host", "macOS", "Linux", "Threat Detection", "Discovery"]
 type = "query"
 
 query = '''
-event.category : process and event.type : (start or process_started) and
- process.name : grep and
- process.args : 
-         ("Little Snitch" or 
-          Avast* or 
-          Avira* or 
-          ESET* or 
-          esets_* or 
-          BlockBlock or 
-          360* or 
-          LuLu or 
-          KnockKnock* or 
-          kav or 
-          KIS or 
-          RTProtectionDaemon or 
-          Malware* or 
-          VShieldScanner or 
-          WebProtection or 
-          webinspectord or 
-          McAfee* or
-          isecespd* or
-          macmnsvc* or
-          masvc or
-          kesl or
-          avscan or
-          guard or
-          rtvscand or
-          symcfgd or
-          scmdaemon or
-          symantec or
-          elastic-endpoint
-          )
+event.category : process and event.type : (start or process_started) and process.name : grep and process.args : ("Little Snitch" or Avast* or Avira* or ESET* or esets_* or BlockBlock or 360* or LuLu or KnockKnock* or kav or KIS or RTProtectionDaemon or Malware* or VShieldScanner or WebProtection or webinspectord or McAfee* or isecespd* or macmnsvc* or masvc or kesl or avscan or guard or rtvscand or symcfgd or scmdaemon or symantec or elastic-endpoint )
 '''
 
 
@@ -68,3 +44,4 @@ reference = "https://attack.mitre.org/techniques/T1518/"
 id = "TA0007"
 name = "Discovery"
 reference = "https://attack.mitre.org/tactics/TA0007/"
+

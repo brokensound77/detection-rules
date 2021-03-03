@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/02/18"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "ca90eea110b9788850029ed854b03c8e99bd34a4f1b2f90404112777e8c9d8c5"
+
 
 [rule]
 author = ["Elastic"]
@@ -21,8 +28,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.name:WMIC.exe and process.args:(delete and shadowcopy)
+event.category:process and event.type:(start or process_started) and process.name:WMIC.exe and process.args:(delete and shadowcopy)
 '''
 
 

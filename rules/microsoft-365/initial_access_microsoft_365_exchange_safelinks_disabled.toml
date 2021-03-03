@@ -1,13 +1,20 @@
 [metadata]
 creation_date = "2020/11/18"
 maturity = "production"
-updated_date = "2021/01/04"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "5678366a0a895f1f838be70b450cc5b13299a4b8de3d882e178b8b0cf134de81"
+
 
 [rule]
 author = ["Elastic"]
 description = """
-Identifies when a Safe Link policy is disabled in Microsoft 365. Safe Link policies for Office applications extend phishing
-protection to documents that contain hyperlinks, even after they have been delivered to a user.
+Identifies when a Safe Link policy is disabled in Microsoft 365. Safe Link policies for Office applications extend
+phishing protection to documents that contain hyperlinks, even after they have been delivered to a user.
 """
 false_positives = [
     """

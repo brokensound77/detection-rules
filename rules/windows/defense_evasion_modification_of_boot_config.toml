@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/03/16"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "c150a660872672a018d31c7acff85b4bc105d8e4b06d91a04631744de39b5fc8"
+
 
 [rule]
 author = ["Elastic"]
@@ -21,10 +28,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.name:bcdedit.exe and
-  process.args:(/set and
-    (bootstatuspolicy and ignoreallfailures or no and recoveryenabled))
+event.category:process and event.type:(start or process_started) and process.name:bcdedit.exe and process.args:(/set and (bootstatuspolicy and ignoreallfailures or no and recoveryenabled))
 '''
 
 

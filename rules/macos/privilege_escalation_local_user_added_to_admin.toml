@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/01/05"
 maturity = "production"
-updated_date = "2020/01/05"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_rule_created_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "025a7961a346208d51c515719b4a7c881da666db7c3a17d3e012cad117b59e47"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,8 +29,7 @@ tags = ["Elastic", "Host", "macOS", "Threat Detection", "Privilege Escalation"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
- process.name:(dscl or dseditgroup) and process.args:(("/Groups/admin" or admin) and ("-a" or "-append"))
+event.category:process and event.type:(start or process_started) and process.name:(dscl or dseditgroup) and process.args:(("/Groups/admin" or admin) and ("-a" or "-append"))
 '''
 
 
@@ -44,3 +50,4 @@ reference = "https://attack.mitre.org/techniques/T1078/003/"
 id = "TA0004"
 name = "Privilege Escalation"
 reference = "https://attack.mitre.org/tactics/TA0004/"
+

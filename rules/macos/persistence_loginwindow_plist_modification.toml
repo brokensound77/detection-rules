@@ -1,12 +1,20 @@
 [metadata]
 creation_date = "2021/01/21"
 maturity = "production"
-updated_date = "2021/01/21"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_rule_created_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "8d94deb674619860150338ede403fcba49c21e03dcbf39ee513033e007aa033c"
+
 
 [rule]
 author = ["Elastic"]
 description = """
-Identifies the creation or modification of the login window property list (plist). Adversaries may modify plist files to run a program during system boot or user login for persistence.
+Identifies the creation or modification of the login window property list (plist). Adversaries may modify plist files to
+run a program during system boot or user login for persistence.
 """
 from = "now-9m"
 index = ["auditbeat-*", "logs-endpoint.events.*"]
@@ -22,9 +30,7 @@ tags = ["Elastic", "Host", "macOS", "Threat Detection", "Persistence"]
 type = "query"
 
 query = '''
-event.category:"file" and not event.type:"deletion" and
- file.name:"com.apple.loginwindow.plist" and
- process.name:(* and not (systemmigrationd or DesktopServicesHelper or diskmanagementd or rsync or launchd or cfprefsd or xpcproxy or ManagedClient or MCXCompositor))
+event.category:"file" and not event.type:"deletion" and file.name:"com.apple.loginwindow.plist" and process.name:(* and not (systemmigrationd or DesktopServicesHelper or diskmanagementd or rsync or launchd or cfprefsd or xpcproxy or ManagedClient or MCXCompositor))
 '''
 
 
@@ -45,3 +51,4 @@ reference = "https://attack.mitre.org/techniques/T1547/011/"
 id = "TA0003"
 name = "Persistence"
 reference = "https://attack.mitre.org/tactics/TA0003/"
+

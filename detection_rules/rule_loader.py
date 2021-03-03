@@ -6,17 +6,21 @@
 import functools
 import glob
 import io
+import json
 import os
 import re
 from collections import OrderedDict
+from pathlib import Path
+from typing import Dict, List
 
 import click
 import pytoml
+import requests
 
 from .mappings import RtaMappings
 from .rule import RULES_DIR, Rule
 from .schemas import CurrentSchema
-from .utils import get_path, cached
+from .utils import get_path, cached, unzip
 
 
 RTA_DIR = get_path("rta")
@@ -46,7 +50,7 @@ def reset():
 @cached
 def load_rule_files(verbose=True, paths=None):
     """Load the rule YAML files, but without parsing the EQL query portion."""
-    file_lookup = {}  # type: dict[str, dict]
+    file_lookup: Dict[str, dict] = {}
 
     if verbose:
         print("Loading rules from {}".format(RULES_DIR))
@@ -68,6 +72,34 @@ def load_rule_files(verbose=True, paths=None):
     if verbose:
         print("Loaded {} rules".format(len(file_lookup)))
     return file_lookup
+
+
+@cached
+def load_rule_contents_from_release(path: str) -> Dict[str, dict]:
+    """Load rule files from local release package. Metadata will not be accurate and will use defaults."""
+    path = Path(path)
+    rules_path = path.joinpath('rules')
+    rule_files = rules_path.glob('*.json')
+    rules = [json.loads(r.read_text()) for r in rule_files]
+    return {r['rule_id']: r for r in rules}
+
+
+@cached
+def load_rule_contents_from_github_release(version: str) -> Dict[str, Rule]:
+    """Load rule files from GitHub release."""
+    zip_url = f'https://api.github.com/repos/elastic/detection-rules/zipball/v{version}'
+    response = requests.get(zip_url)
+    rules = {}
+
+    with unzip(response.content) as archive:
+        base_directory = archive.namelist()[0]
+
+        for name in archive.namelist():
+            if name.startswith(f'{base_directory}rules/') and name.endswith('.toml'):
+                rule = pytoml.loads(archive.read(name))
+                rules[rule['rule']['rule_id']] = rule
+
+    return rules
 
 
 @cached
@@ -168,14 +200,19 @@ def get_rule_contents(rule_id, verbose=True):
 
 
 @cached
-def filter_rules(rules, metadata_field, value):
+def filter_rules(metadata_field, value):
     """Filter rules based on the metadata."""
-    return [rule for rule in rules if rule.metadata.get(metadata_field, '') == value]
+    return [rule for rule in load_rules(verbose=False).values() if rule.metadata.get(metadata_field, '') == value]
 
 
-def get_production_rules(verbose=False):
+def get_production_rules(verbose=False, include_deprecated=False) -> List[Rule]:
     """Get rules with a maturity of production."""
-    return filter_rules(load_rules(verbose=verbose).values(), 'maturity', 'production')
+    from .packaging import filter_rule
+
+    maturity = ['production']
+    if include_deprecated:
+        maturity.append('deprecated')
+    return list(filter(lambda rule: filter_rule(rule, dict(maturity=maturity)), load_rules(verbose=verbose).values()))
 
 
 def find_unneeded_defaults(rule):

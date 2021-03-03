@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/04/27"
 maturity = "production"
-updated_date = "2020/12/09"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "6e5685ce4d4f76055e01992c5f3b2f834708653eaeee82f67965738ee592f0c2"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,8 +29,7 @@ tags = ["Elastic", "Host", "Linux", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and process.name:shred and
-  process.args:("-u" or "--remove" or "-z" or "--zero")
+event.category:process and event.type:(start or process_started) and process.name:shred and process.args:("-u" or "--remove" or "-z" or "--zero")
 '''
 
 
@@ -37,6 +43,7 @@ reference = "https://attack.mitre.org/techniques/T1070/"
 id = "T1070.004"
 name = "File Deletion"
 reference = "https://attack.mitre.org/techniques/T1070/004/"
+
 
 
 [rule.threat.tactic]

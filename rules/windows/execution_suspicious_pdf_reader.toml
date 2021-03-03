@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/03/30"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "8fed2aa12c6fd8c051a417db9b538641e20464259a2b2753d5356b39f8726175"
+
 
 [rule]
 author = ["Elastic"]
@@ -21,16 +28,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Execution"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.parent.name:(AcroRd32.exe or Acrobat.exe or FoxitPhantomPDF.exe or FoxitReader.exe) and
-  process.name:(arp.exe or dsquery.exe or dsget.exe or gpresult.exe or hostname.exe or ipconfig.exe or nbtstat.exe or
-                net.exe or net1.exe or netsh.exe or netstat.exe or nltest.exe or ping.exe or qprocess.exe or
-                quser.exe or qwinsta.exe or reg.exe or sc.exe or systeminfo.exe or tasklist.exe or tracert.exe or
-                whoami.exe or bginfo.exe or cdb.exe or cmstp.exe or csi.exe or dnx.exe or fsi.exe or ieexec.exe or
-                iexpress.exe or installutil.exe or Microsoft.Workflow.Compiler.exe or msbuild.exe or mshta.exe or
-                msxsl.exe or odbcconf.exe or rcsi.exe or regsvr32.exe or xwizard.exe or atbroker.exe or forfiles.exe or
-                schtasks.exe or regasm.exe or regsvcs.exe or cmd.exe or cscript.exe or powershell.exe or pwsh.exe or
-                wmic.exe or wscript.exe or bitsadmin.exe or certutil.exe or ftp.exe)
+event.category:process and event.type:(start or process_started) and process.parent.name:(AcroRd32.exe or Acrobat.exe or FoxitPhantomPDF.exe or FoxitReader.exe) and process.name:(arp.exe or dsquery.exe or dsget.exe or gpresult.exe or hostname.exe or ipconfig.exe or nbtstat.exe or net.exe or net1.exe or netsh.exe or netstat.exe or nltest.exe or ping.exe or qprocess.exe or quser.exe or qwinsta.exe or reg.exe or sc.exe or systeminfo.exe or tasklist.exe or tracert.exe or whoami.exe or bginfo.exe or cdb.exe or cmstp.exe or csi.exe or dnx.exe or fsi.exe or ieexec.exe or iexpress.exe or installutil.exe or Microsoft.Workflow.Compiler.exe or msbuild.exe or mshta.exe or msxsl.exe or odbcconf.exe or rcsi.exe or regsvr32.exe or xwizard.exe or atbroker.exe or forfiles.exe or schtasks.exe or regasm.exe or regsvcs.exe or cmd.exe or cscript.exe or powershell.exe or pwsh.exe or wmic.exe or wscript.exe or bitsadmin.exe or certutil.exe or ftp.exe)
 '''
 
 

@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/10/28"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "72d23d1a74f8fe1866ad5ecaf6e4acfbd31102c03da4319e43bd8e944531ad5a"
+
 
 [rule]
 author = ["Elastic"]
@@ -46,3 +53,4 @@ reference = "https://attack.mitre.org/techniques/T1548/002/"
 id = "TA0004"
 name = "Privilege Escalation"
 reference = "https://attack.mitre.org/tactics/TA0004/"
+

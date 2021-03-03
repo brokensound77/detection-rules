@@ -10,20 +10,24 @@ import json
 import os
 import shutil
 from collections import defaultdict, OrderedDict
+from pathlib import Path
+from typing import List, OrderedDict as OrderedDictType
 
 import click
 
 from . import rule_loader
 from .misc import JS_LICENSE, cached
 from .rule import Rule  # noqa: F401
+from .schemas import Changelog, CurrentSchema
 from .utils import get_path, get_etc_path, load_etc_dump, save_etc_dump
 
 RELEASE_DIR = get_path("releases")
 PACKAGE_FILE = get_etc_path('packages.yml')
 NOTICE_FILE = get_path('NOTICE.txt')
+CHANGELOG_FILE = Path(get_etc_path('rules-changelog.json'))
 
 
-def filter_rule(rule: Rule, config_filter: dict, exclude_fields: dict) -> bool:
+def filter_rule(rule: Rule, config_filter: dict, exclude_fields: dict = None) -> bool:
     """Filter a rule based off metadata and a package configuration."""
     flat_rule = rule.flattened_contents
     for key, values in config_filter.items():
@@ -41,6 +45,7 @@ def filter_rule(rule: Rule, config_filter: dict, exclude_fields: dict) -> bool:
         if len(rule_values & values) == 0:
             return False
 
+    exclude_fields = exclude_fields or {}
     for index, fields in exclude_fields.items():
         if rule.unique_fields and (rule.contents['index'] == index or index == 'any'):
             if set(rule.unique_fields) & set(fields):
@@ -55,7 +60,7 @@ def load_versions(current_versions: dict = None):
     return current_versions or load_etc_dump('version.lock.json')
 
 
-def manage_versions(rules: list, deprecated_rules: list = None, current_versions: dict = None,
+def manage_versions(rules: List[Rule], deprecated_rules: list = None, current_versions: dict = None,
                     exclude_version_update=False, add_new=True, save_changes=False, verbose=True) -> (list, list, list):
     """Update the contents of the version.lock file and optionally save changes."""
     new_rules = {}
@@ -98,7 +103,8 @@ def manage_versions(rules: list, deprecated_rules: list = None, current_versions
             if rule.id not in rule_deprecations:
                 rule_deprecations[rule.id] = {
                     'rule_name': rule.name,
-                    'deprecation_date': deprecation_date
+                    'deprecation_date': deprecation_date,
+                    'stack_version': CurrentSchema.STACK_VERSION
                 }
                 newly_deprecated.append(rule.id)
 
@@ -118,10 +124,14 @@ def manage_versions(rules: list, deprecated_rules: list = None, current_versions
                     click.echo('Updated version.lock.json file')
 
             if newly_deprecated:
-                save_etc_dump(sorted(OrderedDict(rule_deprecations)), 'deprecated_rules.json')
+                save_etc_dump(OrderedDict(sorted(rule_deprecations.items(), key=lambda e: e[1]['rule_name'])),
+                              'deprecated_rules.json')
 
                 if verbose:
                     click.echo('Updated deprecated_rules.json file')
+
+            # only modify the global changelog _after_ versions are locked
+            ChangelogMgmt.update_and_lock(rules)
         else:
             if verbose:
                 click.echo('run `build-release --update-version-lock` to update the version.lock.json and '
@@ -138,16 +148,147 @@ def manage_versions(rules: list, deprecated_rules: list = None, current_versions
     return changed_rules, list(new_rules), newly_deprecated
 
 
+def versions_locked(rules: List[Rule] = None) -> bool:
+    """Check if the version.lock file is fully reconciled with the current state of all rules."""
+    rules = rules or rule_loader.get_production_rules(include_deprecated=True)
+    versions = load_versions(bypass_cache=True)
+
+    for rule in rules:
+        if rule.id not in versions:
+            return False
+        elif rule.get_hash() != versions[rule.id]['sha256']:
+            return False
+    return True
+
+
+class ChangelogMgmt:
+    """Manage the global etc/rules-changelog."""
+
+    @classmethod
+    def initialize_rule_changelogs(cls, rules: List[Rule], force=False, flush=False):
+        """Setup local rule logs within rules which have none defined."""
+        import time
+
+        versions = load_versions()
+
+        for rule in rules:
+            if rule.metadata.get('changelog') and not force:
+                continue
+
+            if flush:
+                rule.metadata.pop('changelog', None)
+
+            if rule.id in versions:
+                rule.append_changelog_entry('_version_locked_')
+
+                if rule.metadata['maturity'] == 'deprecated':
+                    rule.append_changelog_entry('_deprecated_')
+                elif rule.get_hash() != versions[rule.id]['sha256']:
+                    rule.append_changelog_entry('some arbitrary change')
+            else:
+                rule.append_changelog_entry('_rule_created_')
+
+            rule.metadata['updated_date'] = time.strftime('%Y/%m/%d')
+            rule.save(as_rule=True)
+
+    @classmethod
+    def load_changelog_object(cls, path: Path = CHANGELOG_FILE) -> Changelog:
+        changelog = Changelog.Schema().load(load_etc_dump(path))
+        return changelog
+
+    @classmethod
+    def load_changelog(cls, path: Path = CHANGELOG_FILE) -> OrderedDictType:
+        return OrderedDict(cls.load_changelog_object(path).dump())['changelog']
+
+    @classmethod
+    def update_and_lock(cls, rules: List[Rule], save_path: Path = CHANGELOG_FILE, dry_run=False):
+        """Transfers rule changelogs to the global changelog and then inserts rule changelog entry."""
+        from .schemas.changelog import ChangelogEntry
+
+        changelog = cls.load_changelog()
+
+        for rule in rules:
+            rule_changelog = rule.metadata.get('changelog') if dry_run else rule.metadata.pop('changelog', [])
+            # ignore defaults
+            default_changes = ('_version_locked_', '_rule_created_')
+            changes = [c for c in rule_changelog if c['message'] not in default_changes]
+
+            if changes:
+                global_entry = changelog.setdefault(rule.id, [])
+                entry = ChangelogEntry.Schema().load({
+                    'changes': changes,
+                    'minimum_kibana_version': rule.metadata['minimum_kibana_version'],
+                    'rule_version': rule.get_version()
+                })
+
+                global_entry.append(entry.dump())
+
+                if dry_run:
+                    click.echo(f'{rule.id} - {rule.name}:\n{json.dumps(global_entry, indent=2, sort_keys=True)}')
+                else:
+                    # a deprecated rule will need a rule changelog _deprecated_ entry until it is locked in a permanent
+                    #   global rule changelog _deprecated_ entry
+                    if not rule.metadata['maturity'] == 'deprecated':
+                        rule.append_changelog_entry('_version_locked_')
+
+                    rule.save(as_rule=True)
+            else:
+                # put back changelog for unchanged rules
+                rule.metadata['changelog'] = rule_changelog
+
+        if not dry_run:
+            pass
+            # once a rule changelog is popped from rule.metadata, it will fail unit tests unless the version lock is
+            #   updated and saved
+            if save_path == CHANGELOG_FILE:
+                assert versions_locked(rules), 'Rule versions must be locked before locking the primary changelog'
+
+            save_etc_dump({'changelog': changelog}, str(save_path))
+
+    @staticmethod
+    def _filter_entry(entry: dict, filter_config: dict) -> dict:
+        """Filter changelog entries."""
+
+        return entry
+
+    @classmethod
+    def markdown_from_file(cls, path: Path, rule_ids: list = None, filter_config: dict = None) -> str:
+        """Generate a markdown formatted version of the global changelog."""
+        # generate links for pulls
+        # changelog = {k: v for k, v in cls.load_changelog().items() if k in rule_ids}
+        # repo_url = 'https://github.com/elastic/detection-rules/pull/'
+        # markdown = {}
+        #
+        # if filter_config:
+        #     changelog = list(filter(lambda rule_entry: cls._filter_entry(rule_entry, filter_config), changelog.items()))  # noqa:E501
+        #
+        # for rule_id, rule_changelog in changelog.items():
+        #     for entry in rule_changelog:
+        #         # pr_link = ''
+        #         changes = [f'{c["date"]} ([{c["pull_request"]}]({repo_url + c["pull_request"]})) {c["change"]}'
+        #                    for c in entry['changes']]
+        #         entry['changes'] = changes
+        #
+        # path.write_text(markdown)
+        # return markdown
+
+    @classmethod
+    def markdown_from_rules(cls, rules: List[Rule]) -> str:
+        """Generate markdown changelog from provided rules local changelogs."""
+
+
 class Package(object):
     """Packaging object for siem rules and releases."""
 
-    def __init__(self, rules, name, deprecated_rules=None, release=False, current_versions=None, min_version=None,
-                 max_version=None, update_version_lock=False):
+    def __init__(self, rules: List[Rule], name, deprecated_rules: List[Rule] = None, release=False,
+                 current_versions: dict = None, min_version: int = None, max_version: int = None,
+                 update_version_lock=False, registry_data: dict = None):
         """Initialize a package."""
-        self.rules = [r.copy() for r in rules]  # type: list[Rule]
+        self.rules = [r.copy() for r in rules]
         self.name = name
-        self.deprecated_rules = [r.copy() for r in deprecated_rules or []]  # type: list[Rule]
+        self.deprecated_rules = [r.copy() for r in deprecated_rules or []]
         self.release = release
+        self.registry_data = registry_data or {}
 
         self.changed_rule_ids, self.new_rules_ids, self.removed_rule_ids = self._add_versions(current_versions,
                                                                                               update_version_lock)
@@ -237,6 +378,9 @@ class Package(object):
         self._package_index_file(rules_dir)
 
         if self.release:
+            if self.registry_data:
+                self._generate_registry_package(save_dir)
+
             self.save_release_files(extras_dir, self.changed_rule_ids, self.new_rules_ids, self.removed_rule_ids)
 
             # zip all rules only and place in extras
@@ -407,6 +551,39 @@ class Package(object):
         doc = PackageDocument(path, self)
         doc.populate()
         doc.close()
+
+    def _generate_registry_package(self, save_dir):
+        """Generate the artifact for the oob package-storage."""
+        from .schemas.registry_package import get_manifest
+
+        assert self.registry_data
+
+        registry_manifest = get_manifest(self.registry_data['format_version'])
+        manifest = registry_manifest.Schema().load(self.registry_data)
+
+        package_dir = Path(save_dir).joinpath(manifest.version)
+        docs_dir = package_dir.joinpath('docs')
+        rules_dir = package_dir.joinpath('kibana', 'rules')
+
+        docs_dir.mkdir(parents=True)
+        rules_dir.mkdir(parents=True)
+
+        manifest_file = package_dir.joinpath('manifest.yml')
+        readme_file = docs_dir.joinpath('README.md')
+
+        manifest_file.write_text(json.dumps(manifest.dump(), indent=2, sort_keys=True))
+        shutil.copyfile(CHANGELOG_FILE, str(rules_dir.joinpath('CHANGELOG.json')))
+
+        for rule in self.rules:
+            rule.save(new_path=str(rules_dir.joinpath(f'rule-{rule.id}.json')))
+
+        readme_text = '# Detection rules\n'
+        readme_text += '\n'
+        readme_text += 'The detection rules package is a non-integration package to store all the rules and '
+        readme_text += 'dependencies (e.g. ML jobs) for the detection engine within the Elastic Security application.\n'
+        readme_text += '\n'
+
+        readme_file.write_text(readme_text)
 
     def bump_versions(self, save_changes=False, current_versions=None):
         """Bump the versions of all production rules included in a release and optionally save changes."""

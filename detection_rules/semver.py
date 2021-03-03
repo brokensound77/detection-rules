@@ -8,9 +8,15 @@ import re
 
 class Version(tuple):
 
-    def __new__(cls, version):
+    def __new__(cls, version, pad=None):
         if not isinstance(version, (int, list, tuple)):
             version = tuple(int(a) if a.isdigit() else a for a in re.split(r'[.-]', version))
+
+            if pad:
+                width = len(version)
+
+                if pad > width:
+                    version = version + (0,) * (pad - width)
 
         return version if isinstance(version, int) else tuple.__new__(cls, version)
 

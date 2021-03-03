@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/09/03"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "adc3a7c80a5000a6177b44eba1b7d7f6ba40541499a00372c2b2d70e20436317"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,9 +29,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Command and Control"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  (process.name:desktopimgdownldr.exe or process.pe.original_file_name:desktopimgdownldr.exe) and
-  process.args:/lockscreenurl\:http*
+event.category:process and event.type:(start or process_started) and (process.name:desktopimgdownldr.exe or process.pe.original_file_name:desktopimgdownldr.exe) and process.args:/lockscreenurl\:http*
 '''
 
 

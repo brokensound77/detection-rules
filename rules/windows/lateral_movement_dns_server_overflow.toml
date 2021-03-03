@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/07/16"
 maturity = "production"
-updated_date = "2020/11/03"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "084010714173a6e65ff9ed8e36e12adfb535c46ef0d395a8fe9a997082773340"
+
 
 [rule]
 author = ["Elastic"]
@@ -38,8 +45,7 @@ tags = ["Elastic", "Network", "Threat Detection", "Lateral Movement"]
 type = "query"
 
 query = '''
-event.category:(network or network_traffic) and destination.port:53 and
-  (event.dataset:zeek.dns or type:dns or event.type:connection) and network.bytes > 60000
+event.category:(network or network_traffic) and destination.port:53 and (event.dataset:zeek.dns or type:dns or event.type:connection) and network.bytes > 60000
 '''
 
 

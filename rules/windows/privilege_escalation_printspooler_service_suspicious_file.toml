@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/14"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "84312834bd188df4117237dd0eac17acfe56ea9eaaf769d8d30fdb737233f2a9"
+
 
 [rule]
 author = ["Elastic"]
@@ -26,10 +33,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Privilege Escalation"
 type = "query"
 
 query = '''
-event.category:file and not event.type:deletion and
-  process.name:spoolsv.exe and
-  file.extension:(exe or dll) and
-  not file.path:(C\:\\Windows\\System32\\spool\\* or C\:\\Windows\\Temp\\* or C\:\\Users\\*)
+event.category:file and not event.type:deletion and process.name:spoolsv.exe and file.extension:(exe or dll) and not file.path:(C\:\\Windows\\System32\\spool\\* or C\:\\Windows\\Temp\\* or C\:\\Users\\*)
 '''
 
 

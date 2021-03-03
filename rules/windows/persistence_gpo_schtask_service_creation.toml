@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/13"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "c2606d06fb46d27eaf059cabf9a87e394d75d418dc15d9233f5cff585ed7f05f"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,10 +29,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Persistence"]
 type = "query"
 
 query = '''
-event.category:file and not event.type:deletion and
-  file.path:(C\:\\Windows\\SYSVOL\\domain\\Policies\\*\\MACHINE\\Preferences\\ScheduledTasks\\ScheduledTasks.xml or
-             C\:\\Windows\\SYSVOL\\domain\\Policies\\*\\MACHINE\\Preferences\\Preferences\\Services\\Services.xml) and
-  not process.name:dfsrs.exe
+event.category:file and not event.type:deletion and file.path:(C\:\\Windows\\SYSVOL\\domain\\Policies\\*\\MACHINE\\Preferences\\ScheduledTasks\\ScheduledTasks.xml or C\:\\Windows\\SYSVOL\\domain\\Policies\\*\\MACHINE\\Preferences\\Preferences\\Services\\Services.xml) and not process.name:dfsrs.exe
 '''
 
 

@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/05/21"
 maturity = "production"
-updated_date = "2020/10/26"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "3ec5aad58e1f18140fee7ae4ff11fd1faf068e7d0c351f1922efff21f1db296e"
+
 
 [rule]
 author = ["Elastic"]
@@ -34,3 +41,4 @@ type = "query"
 query = '''
 event.dataset:okta.system and event.action:policy.lifecycle.update
 '''
+

@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/06/05"
 maturity = "production"
-updated_date = "2020/12/09"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "5ac41e3ee65442e7438c687a5fbfda7bbc1de58f406d829d096217c041f0dc79"
+
 
 [rule]
 author = ["Elastic"]
@@ -49,6 +56,7 @@ reference = "https://attack.mitre.org/techniques/T1565/"
 id = "T1565.001"
 name = "Stored Data Manipulation"
 reference = "https://attack.mitre.org/techniques/T1565/001/"
+
 
 
 [rule.threat.tactic]

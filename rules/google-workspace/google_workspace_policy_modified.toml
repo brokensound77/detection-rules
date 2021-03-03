@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/11/17"
 maturity = "production"
-updated_date = "2020/12/16"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "6ab1ea750113b4528f973d71f7ba55d9f1322704fac965e99a95ea81e7c90572"
+
 
 [rule]
 author = ["Elastic"]
@@ -36,16 +43,6 @@ tags = ["Elastic", "Cloud", "Google Workspace", "Continuous Monitoring", "SecOps
 type = "query"
 
 query = '''
-event.dataset:(gsuite.admin or google_workspace.admin) and
-  event.provider:admin and event.category:iam and
-  event.action:(CHANGE_APPLICATION_SETTING or CREATE_APPLICATION_SETTING) and
-  gsuite.admin.setting.name:(
-    "Password Management - Enforce strong password" or
-    "Password Management - Password reset frequency" or
-    "Password Management - Enable password reuse" or
-    "Password Management - Enforce password policy at next login" or
-    "Password Management - Minimum password length" or
-    "Password Management - Maximum password length"
-  )
+event.dataset:(gsuite.admin or google_workspace.admin) and event.provider:admin and event.category:iam and event.action:(CHANGE_APPLICATION_SETTING or CREATE_APPLICATION_SETTING) and gsuite.admin.setting.name:( "Password Management - Enforce strong password" or "Password Management - Password reset frequency" or "Password Management - Enable password reuse" or "Password Management - Enforce password policy at next login" or "Password Management - Minimum password length" or "Password Management - Maximum password length" )
 '''
 

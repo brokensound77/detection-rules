@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2021/01/04"
 maturity = "production"
-updated_date = "2021/01/04"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_rule_created_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "e8602cacdfa0d7007c265b48b0ff0ed31a2cd83296ae05b55d9991e449b21f55"
+
 
 [rule]
 author = ["Elastic", "Willem D'Haese"]
@@ -29,9 +36,7 @@ tags = ["Elastic", "Cloud", "Azure", "Continuous Monitoring", "SecOps", "Identit
 type = "query"
 
 query = '''
-event.dataset:azure.signinlogs and
-  azure.signinlogs.properties.risk_level_during_signin:high and
-  event.outcome:(success or Success)
+event.dataset:azure.signinlogs and azure.signinlogs.properties.risk_level_during_signin:high and event.outcome:(success or Success)
 '''
 
 

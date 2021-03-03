@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/14"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "57132c55205fffcb3f6622e72491cfa5497afc2bc90741508441d349f60e37a5"
+
 
 [rule]
 author = ["Elastic"]
@@ -23,10 +30,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Privilege Escalation"
 type = "query"
 
 query = '''
-event.category:file and not event.type:deletion and
- file.extension:(spl or SPL) and
- file.path:C\:\\Windows\\System32\\spool\\PRINTERS\\* and
- not process.name:(spoolsv.exe or printfilterpipelinesvc.exe or PrintIsolationHost.exe or splwow64.exe or msiexec.exe or poqexec.exe)
+event.category:file and not event.type:deletion and file.extension:(spl or SPL) and file.path:C\:\\Windows\\System32\\spool\\PRINTERS\\* and not process.name:(spoolsv.exe or printfilterpipelinesvc.exe or PrintIsolationHost.exe or splwow64.exe or msiexec.exe or poqexec.exe)
 '''
 
 

@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/12/14"
 maturity = "production"
-updated_date = "2020/12/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "1b1038129eba695022215c9b87b49ef2b85573384b320b04232a18f60c3ea962"
+
 
 [rule]
 author = ["Elastic"]
@@ -33,9 +40,7 @@ tags = ["Elastic", "Cloud", "Azure", "Continuous Monitoring", "SecOps", "Identit
 type = "query"
 
 query = '''
-event.dataset:azure.signinlogs and
-  azure.signinlogs.properties.app_display_name:"Azure Active Directory PowerShell" and
-  azure.signinlogs.properties.token_issuer_type:AzureAD and event.outcome:(success or Success)
+event.dataset:azure.signinlogs and azure.signinlogs.properties.app_display_name:"Azure Active Directory PowerShell" and azure.signinlogs.properties.token_issuer_type:AzureAD and event.outcome:(success or Success)
 '''
 
 
@@ -51,7 +56,9 @@ name = "Cloud Accounts"
 reference = "https://attack.mitre.org/techniques/T1078/004/"
 
 
+
 [rule.threat.tactic]
 id = "TA0001"
 name = "Initial Access"
 reference = "https://attack.mitre.org/tactics/TA0001/"
+

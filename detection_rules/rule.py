@@ -7,6 +7,7 @@ import copy
 import hashlib
 import json
 import os
+import time
 
 import click
 import kql
@@ -15,7 +16,8 @@ import eql
 from . import ecs, beats
 from .attack import tactics, build_threat_map_entry, matrix
 from .rule_formatter import nested_normalize, toml_write
-from .schemas import CurrentSchema, TomlMetadata  # RULE_TYPES, metadata_schema, schema_validate, get_schema
+from .schemas import TomlMetadata, all_schemas, get_schemas
+from .semver import Version
 from .utils import get_path, clear_caches, cached
 
 
@@ -29,12 +31,22 @@ class Rule(object):
     def __init__(self, path, contents):
         """Create a Rule from a toml management format."""
         self.path = os.path.abspath(path)
-        self.contents = contents.get('rule', contents)
-        self.metadata = contents.get('metadata', self.set_metadata(contents))
+        self.contents = contents.get('rule')
+        self.metadata = self.set_metadata(contents['metadata'])
 
         self.formatted_rule = copy.deepcopy(self.contents).get('query', None)
 
-        self.validate()
+        # all schemas will validate back to the minimum supported
+        self.minimum_kibana_version = Version(self.metadata['minimum_kibana_version'])
+        self.supported_kibana_schemas = [s for s in all_schemas
+                                         if Version(s.STACK_VERSION) >= self.minimum_kibana_version]
+
+        # deprecated rules would no longer need to be validated
+        if self.metadata['maturity'] == 'deprecated':
+            self.normalize()
+        else:
+            self.validate()
+
         self.unoptimized_query = self.contents.get('query')
         self._original_hash = self.get_hash()
 
@@ -155,7 +167,15 @@ class Rule(object):
         """Get the default values for required properties in the metadata schema."""
         required = [v for v in TomlMetadata.get_schema()['required']]
         properties = {k: v for k, v in TomlMetadata.get_schema()['properties'].items() if k in required}
-        return {k: v.get('default') or [v['items']['default']] for k, v in properties.items()}
+        defaults = {}
+
+        for field, schema in properties.items():
+            if 'default' in schema:
+                defaults[field] = schema['default']
+            elif 'items' in schema and 'default' in schema['items']:
+                defaults[field] = [schema['default']]
+
+        return defaults
 
     def set_metadata(self, contents):
         """Parse metadata fields and set missing required fields to the default values."""
@@ -220,17 +240,24 @@ class Rule(object):
         """Validate against a rule schema, query schema, and linting."""
         self.normalize()
 
-        if as_rule:
-            schema_cls = CurrentSchema.toml_schema()
-            contents = self.rule_format()
-        elif versioned:
-            schema_cls = CurrentSchema.versioned()
-            contents = self.contents
-        else:
-            schema_cls = CurrentSchema
-            contents = self.contents
+        # TODO: validating against all supported schemas works fine but will have issues with query validation if the
+        #  language changed along the way - unless the state of those versions were accessible in those modules
+        #
+        # ECS and beats schemas are also not pinned to respective stack releases, so we can either map those and tie
+        #  those validations accordingly or just assume latest. Alternatively, we could just trust that authors will
+        #  properly define them in rule metadata and update that config to map ecs/beats versions to stack versions
+        for schema in self.supported_kibana_schemas:
+            if as_rule:
+                schema_cls = schema.toml_schema()
+                contents = self.rule_format()
+            elif versioned:
+                schema_cls = schema.versioned()
+                contents = self.contents
+            else:
+                schema_cls = schema
+                contents = self.contents
 
-        schema_cls.validate(contents, role=self.type)
+            schema_cls.validate(contents, role=self.type)
 
         skip_query_validation = self.metadata['maturity'] in ('experimental', 'development') and \
             self.metadata.get('query_schema_validation') is False
@@ -315,13 +342,20 @@ class Rule(object):
                     raise kql.KqlParseError(exc.error_msg, exc.line, exc.column, exc.source,
                                             len(exc.caret.lstrip()), trailer=trailer)
 
-    def save(self, new_path=None, as_rule=False, verbose=False):
+    def save(self, new_path=None, as_rule=False, verbose=False, ignore_version=True):
         """Save as pretty toml rule file as toml."""
         path, _ = os.path.splitext(new_path or self.get_path())
         path += '.toml' if as_rule else '.json'
 
         if as_rule:
+            version = None
+            if ignore_version:
+                version = self.contents.pop('version', None)
+
             toml_write(self.rule_format(), path)
+
+            if ignore_version and version:
+                self.contents['version'] = version
         else:
             with open(path, 'w', newline='\n') as f:
                 json.dump(self.get_payload(), f, sort_keys=True, indent=2)
@@ -347,7 +381,7 @@ class Rule(object):
         """Get the version of the rule."""
         from .packaging import load_versions
 
-        rules_versions = load_versions
+        rules_versions = load_versions()
 
         if self.id in rules_versions:
             version_info = rules_versions[self.id]
@@ -378,8 +412,26 @@ class Rule(object):
 
         return payload
 
+    def append_changelog_entry(self, message, pull_request=None, update=False):
+        """Append an entry to the local rule changelog."""
+        entry = {
+            'message': message,
+            'date': time.strftime('%Y/%m/%d'),
+            'pull_request': pull_request or '',
+            'sha256': self.get_hash()
+        }
+        changelog = self.metadata.setdefault('changelog', [])
+
+        if update and len(changelog) > 0:
+            changelog.pop()
+
+        changelog.append(entry)
+
+        return entry
+
     @classmethod
-    def build(cls, path=None, rule_type=None, required_only=True, save=True, verbose=False, **kwargs):
+    def build(cls, path=None, rule_type=None, required_only=True, minimum_kibana_version=None, save=True, verbose=False,
+              **kwargs):
         """Build a rule from data and prompts."""
         from .misc import schema_prompt
 
@@ -392,11 +444,16 @@ class Rule(object):
             kwargs.update(kwargs.pop('metadata'))
             kwargs.update(kwargs.pop('rule'))
 
-        rule_type = rule_type or kwargs.get('type') or \
-            click.prompt('Rule type ({})'.format(', '.join(CurrentSchema.RULE_TYPES)),
-                         type=click.Choice(CurrentSchema.RULE_TYPES))
+        schemas = {str(v): s for v, s in get_schemas().items()}
+        minimum_kibana_version = minimum_kibana_version or schema_prompt('minimum_kibana_version', required=True,
+                                                                         enum=list(schemas))
+        current_schema = schemas[minimum_kibana_version]
 
-        schema = CurrentSchema.get_schema(role=rule_type)
+        rule_type = rule_type or kwargs.get('type') or \
+            click.prompt('Rule type ({})'.format(', '.join(current_schema.RULE_TYPES)),
+                         type=click.Choice(current_schema.RULE_TYPES))
+
+        schema = current_schema.get_schema(role=rule_type)
         props = schema['properties']
         opt_reqs = schema.get('required', [])
         contents = {}
@@ -419,10 +476,17 @@ class Rule(object):
             if name == 'threat':
                 threat_map = []
 
-                while click.confirm('add mitre tactic?'):
-                    tactic = schema_prompt('mitre tactic name', type='string', enum=tactics, required=True)
-                    technique_ids = schema_prompt(f'technique or sub-technique IDs for {tactic}', type='array',
-                                                  required=False, enum=list(matrix[tactic])) or []
+                while click.confirm('add ATT&CK tactic?'):
+                    technique_required = current_schema.threat.items.document_cls.technique.required
+                    tactic = schema_prompt('ATT&CK tactic name', type='string', enum=tactics, required=True)
+                    technique_ids = []
+
+                    if not technique_required:
+                        technique_required = click.confirm('add ATT&CK technique?')
+
+                    if technique_required:
+                        technique_ids = schema_prompt(f'technique or sub-technique IDs for {tactic}', type='array',
+                                                      required=technique_required, enum=list(matrix[tactic])) or []
 
                     try:
                         threat_map.append(build_threat_map_entry(tactic, *technique_ids))
@@ -461,7 +525,7 @@ class Rule(object):
         rule = None
 
         try:
-            rule = cls(path, {'rule': contents})
+            rule = cls(path, {'rule': contents, 'metadata': {'minimum_kibana_version': minimum_kibana_version}})
         except kql.KqlParseError as e:
             if e.error_msg == 'Unknown field':
                 warning = ('If using a non-ECS field, you must update "ecs{}.non-ecs-schema.json" under `beats` or '
@@ -487,6 +551,8 @@ class Rule(object):
 
                 break
 
+        rule.append_changelog_entry(message='_rule_created_')
+
         if save:
             rule.save(verbose=True, as_rule=True)
 
@@ -498,7 +564,7 @@ class Rule(object):
         # click.echo('Placeholder added to rule-mapping.yml')
 
         click.echo('Rule will validate against the latest ECS schema available (and beats if necessary)')
-        click.echo('    - to have a rule validate against specific ECS schemas, add them to metadata->ecs_versions')
-        click.echo('    - to have a rule validate against a specific beats schema, add it to metadata->beats_version')
+        click.echo('  - to have a rule validate against specific ECS schemas, add them to metadata->ecs_versions')
+        click.echo('  - to have a rule validate against a specific beats schema, add it to metadata->beats_version')
 
         return rule

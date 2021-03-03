@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/09/03"
 maturity = "production"
-updated_date = "2020/10/26"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "bcf941f7244ac82c4700aaa98b51326165d8c561e6be7ea725a0372ac568c9e6"
+
 
 [rule]
 anomaly_threshold = 75

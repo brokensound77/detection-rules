@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/11/30"
 maturity = "production"
-updated_date = "2020/12/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "80b3d313db62358da59fc880599240dba855703161326e1418839c4d629dc5d8"
+
 
 [rule]
 author = ["Elastic"]
@@ -30,9 +37,6 @@ tags = ["Elastic", "Cloud", "Microsoft 365", "Continuous Monitoring", "SecOps", 
 type = "query"
 
 query = '''
-event.dataset:o365.audit and event.provider:MicrosoftTeams and
-event.category:web and event.action:TeamsTenantSettingChanged and
-o365.audit.Name:"Allow sideloading and interaction of custom apps" and
-o365.audit.NewValue:True and event.outcome:success
+event.dataset:o365.audit and event.provider:MicrosoftTeams and event.category:web and event.action:TeamsTenantSettingChanged and o365.audit.Name:"Allow sideloading and interaction of custom apps" and o365.audit.NewValue:True and event.outcome:success
 '''
 

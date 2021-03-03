@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2021/01/14"
 maturity = "production"
-updated_date = "2021/01/14"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_rule_created_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "2a2bf58ec3eb20229d9cfe9c90ab554d80e754788073a09f1047b4c8e37690f8"
+
 
 [rule]
 author = ["Elastic"]
@@ -23,17 +30,7 @@ tags = ["Elastic", "Host", "macOS", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:start and
-  process.name:defaults and process.args:
-    (com.apple.Safari and write and not
-      (
-      UniversalSearchEnabled or
-      SuppressSearchSuggestions or
-      WebKitTabToLinksPreferenceKey or
-      ShowFullURLInSmartSearchField or
-      com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks
-      )
-    )
+event.category:process and event.type:start and process.name:defaults and process.args: (com.apple.Safari and write and not ( UniversalSearchEnabled or SuppressSearchSuggestions or WebKitTabToLinksPreferenceKey or ShowFullURLInSmartSearchField or com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks ) )
 '''
 
 
@@ -47,6 +44,7 @@ reference = "https://attack.mitre.org/techniques/T1562/"
 id = "T1562.001"
 name = "Disable or Modify Tools"
 reference = "https://attack.mitre.org/techniques/T1562/001/"
+
 
 
 [rule.threat.tactic]

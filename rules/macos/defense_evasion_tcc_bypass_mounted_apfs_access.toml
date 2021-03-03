@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/01/04"
 maturity = "production"
-updated_date = "2020/01/04"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_rule_created_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "5d4a852767f3bfa977a81196562f8d1d89664e1c0f75031a068afd4c7a47c443"
+
 
 [rule]
 author = ["Elastic"]
@@ -23,8 +30,7 @@ tags = ["Elastic", "Host", "macOS", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category : process and event.type : (start or process_started) and process.name : mount_apfs and
-  process.args : (/System/Volumes/Data and noowners)
+event.category : process and event.type : (start or process_started) and process.name : mount_apfs and process.args : (/System/Volumes/Data and noowners)
 '''
 
 
@@ -40,3 +46,4 @@ reference = "https://attack.mitre.org/techniques/T1006/"
 id = "TA0005"
 name = "Defense Evasion"
 reference = "https://attack.mitre.org/tactics/TA0005/"
+

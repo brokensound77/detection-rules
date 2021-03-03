@@ -1,14 +1,21 @@
 [metadata]
 creation_date = "2020/11/19"
 maturity = "production"
-updated_date = "2020/12/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "b94acd2020fb45df725709165c4ca72568e6ba7bd13c50a8b42a246c6421139b"
+
 
 [rule]
 author = ["Elastic"]
 description = """
-Identifies the modification of an anti-phishing rule in Microsoft 365. By default, Microsoft 365 includes built-in features
-that help protect users from phishing attacks. Anti-phishing rules increase this protection by refining settings to
-better detect and prevent attacks.
+Identifies the modification of an anti-phishing rule in Microsoft 365. By default, Microsoft 365 includes built-in
+features that help protect users from phishing attacks. Anti-phishing rules increase this protection by refining
+settings to better detect and prevent attacks.
 """
 false_positives = [
     """

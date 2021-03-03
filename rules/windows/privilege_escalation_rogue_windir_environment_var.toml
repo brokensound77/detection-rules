@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/11/26"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "befc88a6c59abd49be506ad5f163643343ebae8ebf1baabae911e626c1dd6b40"
+
 
 [rule]
 author = ["Elastic"]
@@ -32,11 +39,11 @@ framework = "MITRE ATT&CK"
 id = "T1574"
 name = "Hijack Execution Flow"
 reference = "https://attack.mitre.org/techniques/T1574/"
-
 [[rule.threat.technique.subtechnique]]
 id = "T1574.007"
 name = "Path Interception by PATH Environment Variable"
 reference = "https://attack.mitre.org/techniques/T1574/007/"
+
 
 
 [rule.threat.tactic]

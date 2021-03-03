@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/04/14"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "bc30947645ccb255bab9e714d47bf0b47272aad67d15ee63b7751b017ded7486"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,10 +29,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  (process.name:appcmd.exe or process.pe.original_file_name:appcmd.exe) and
-  process.args:/dontLog\:\"True\" and
-  not process.parent.name:iissetup.exe
+event.category:process and event.type:(start or process_started) and (process.name:appcmd.exe or process.pe.original_file_name:appcmd.exe) and process.args:/dontLog\:\"True\" and not process.parent.name:iissetup.exe
 '''
 
 

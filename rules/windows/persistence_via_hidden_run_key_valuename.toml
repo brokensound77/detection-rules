@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/11/15"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "2583ad70864c291782e795d2c7e55ba1c26326ac2cedda0418a8fb012eb735b5"
+
 
 [rule]
 author = ["Elastic"]
@@ -45,6 +52,7 @@ reference = "https://attack.mitre.org/techniques/T1547/"
 id = "T1547.001"
 name = "Registry Run Keys / Startup Folder"
 reference = "https://attack.mitre.org/techniques/T1547/001/"
+
 
 
 [rule.threat.tactic]

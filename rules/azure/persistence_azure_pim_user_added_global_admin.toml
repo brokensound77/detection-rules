@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/09/24"
 maturity = "production"
-updated_date = "2020/12/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "708c0e6d2f8fefce078ac01ef50ee7e40b43e988e71ffec034da94669740f4e9"
+
 
 [rule]
 author = ["Elastic"]
@@ -34,11 +41,7 @@ tags = ["Elastic", "Cloud", "Azure", "Continuous Monitoring", "SecOps", "Identit
 type = "query"
 
 query = '''
-event.dataset:azure.auditlogs and azure.auditlogs.properties.category:RoleManagement and
-    azure.auditlogs.operation_name:("Add eligible member to role in PIM completed (permanent)" or
-                                    "Add member to role in PIM completed (timebound)") and
-    azure.auditlogs.properties.target_resources.*.display_name:"Global Administrator" and
-    event.outcome:(Success or success)
+event.dataset:azure.auditlogs and azure.auditlogs.properties.category:RoleManagement and azure.auditlogs.operation_name:("Add eligible member to role in PIM completed (permanent)" or "Add member to role in PIM completed (timebound)") and azure.auditlogs.properties.target_resources.*.display_name:"Global Administrator" and event.outcome:(Success or success)
 '''
 
 

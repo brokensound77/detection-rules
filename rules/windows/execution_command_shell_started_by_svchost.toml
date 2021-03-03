@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/02/18"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "6949e066b8a894d4d04b9bd71eb8d414efa7138ad4f07f1c1784e4387e494805"
+
 
 [rule]
 author = ["Elastic"]
@@ -18,8 +25,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Execution"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.parent.name:svchost.exe and process.name:cmd.exe
+event.category:process and event.type:(start or process_started) and process.parent.name:svchost.exe and process.name:cmd.exe
 '''
 
 

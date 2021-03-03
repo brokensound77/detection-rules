@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2021/01/04"
 maturity = "production"
-updated_date = "2021/01/04"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_rule_created_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "26828fea5097b40490392623c98d0cf8d98e63f7ff9e90e7008469ed146b03ad"
+
 
 [rule]
 author = ["Elastic"]
@@ -62,7 +69,9 @@ name = "Spearphishing Attachment"
 reference = "https://attack.mitre.org/techniques/T1566/001/"
 
 
+
 [rule.threat.tactic]
 id = "TA0001"
 name = "Initial Access"
 reference = "https://attack.mitre.org/tactics/TA0001/"
+

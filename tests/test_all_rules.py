@@ -18,7 +18,8 @@ import pytoml
 from rta import get_ttp_names
 
 from detection_rules import attack, beats, ecs, rule_loader
-from detection_rules.utils import load_etc_dump
+from detection_rules.packaging import load_versions
+from detection_rules.utils import get_path, load_etc_dump
 from detection_rules.rule import Rule
 
 
@@ -68,7 +69,17 @@ class TestValidRules(unittest.TestCase):
         """Ensure that every rule file validates against the rule schema."""
         for file_name, contents in rule_loader.load_rule_files().items():
             rule = Rule(file_name, contents)
-            rule.validate(as_rule=True)
+
+            if rule.metadata['maturity'] == 'deprecated':
+                continue
+
+            try:
+                rule.validate(as_rule=True)
+            except jsonschema.ValidationError as e:
+                rules_path = get_path('rules')
+                rule_path = Path(rule.path).relative_to(rules_path)
+                e.message = f'{rule_path} -> {e}'
+                raise e
 
     def test_all_rule_queries_optimized(self):
         """Ensure that every rule query is in optimized form."""
@@ -394,3 +405,119 @@ class TestRuleMetadata(unittest.TestCase):
                 error_msg = f'{error_prefix} it is unnecessary to define the current latest ecs version if only ' \
                             f'one version is specified: {latest_ecs}'
                 self.assertNotIn(latest_ecs, ecs_versions, error_msg)
+
+    def test_deprecated_rules(self):
+        """Test that deprecated rules are properly handled."""
+        from detection_rules.utils import get_path
+
+        rules = rule_loader.load_rules()
+        versions = load_versions()
+        deprecations = load_etc_dump('deprecated_rules.json')
+        deprecated_rules = {}
+
+        for rule in rules.values():
+            rule_str = f'{rule.id} - {rule.name} ->'
+            maturity = rule.metadata['maturity']
+
+            if maturity == 'deprecated':
+                deprecated_rules[rule.id] = rule
+                err_msg = f'{rule_str} cannot be deprecated if it has not been version locked. Convert to ' \
+                          f'`development` or delete the rule file instead.'
+                self.assertIn(rule.id, versions, err_msg)
+
+                rule_path = Path(rule.path).relative_to(get_path('rules'))
+                err_msg = f'{rule_str} deprecated rules should be stored in "{get_path("rules", "_deprecated")}" folder'
+                self.assertEqual('_deprecated', rule_path.parts[0], err_msg)
+
+        missing_rules = sorted(set(versions).difference(set(rules)))
+        missing_rule_strings = '\n '.join(f'{r} - {versions[r]["rule_name"]}' for r in missing_rules)
+        err_msg = f'Deprecated rules should not be removed, but moved to the deprecated folder instead. The ' \
+                  f'following rules have been version locked and are missing. Re-add to the deprecated folder and ' \
+                  f'update maturity to "deprecated": \n {missing_rule_strings}'
+        self.assertEqual([], missing_rules, err_msg)
+
+        for rule_id, entry in deprecations.items():
+            rule_str = f'{rule_id} - {entry["rule_name"]} ->'
+            self.assertIn(rule_id, deprecated_rules, f'{rule_str} is logged in "deprecated_rules.json" but is missing')
+
+
+class TestRuleChangelog(unittest.TestCase):
+    """Test the changelog for rules."""
+
+    @classmethod
+    def setUpClass(cls):
+        from detection_rules.packaging import ChangelogMgmt
+
+        cls.rule_versions = load_versions()
+        cls.changelog = ChangelogMgmt.load_changelog()
+
+    def test_local_deprecated_rule_changelogs(self):
+        """Ensure that deprecated rules are logged properly."""
+        for rule in rule_loader.filter_rules('maturity', 'deprecated'):
+            rule_str = f'{rule.id} - {rule.name} ->'
+
+            assert rule.id in self.rule_versions, 'only version locked rules should be marked deprecated'
+
+            global_log = self.changelog.get(rule.id, [])
+            if rule.id in self.rule_versions:
+                self.assertGreater(len(global_log), 0, f'{rule_str} missing global changelog entry')
+
+            local_log = rule.metadata.get('changelog', [])
+
+            # a deprecated rule will need a rule changelog _deprecated_ entry until it is version locked at
+            #  which time it should have a permanent global rule changelog _deprecated_ entry
+            in_rule_cl = local_log[-1]['message'] == 'deprecated' if local_log else False
+            in_global_cl = global_log[-1]['message'] == 'deprecated' if global_log else False
+            err_msg = f'{rule_str} deprecated rules must have a _deprecated_ entry in the local or global changelog'
+            assert in_global_cl or in_rule_cl, err_msg
+
+    def test_local_production_rule_changelogs(self):
+        """Ensure that every production rule change is logged."""
+        for rule in rule_loader.get_production_rules():
+            rule_str = f'{rule.id} - {rule.name} ->'
+            rule_hash = rule.get_hash()
+
+            local_log = rule.metadata.get('changelog', [])
+            self.assertGreater(len(local_log), 0, f'{rule_str} missing local changelog entries within rule file')
+            local_last_entry = local_log[-1]
+
+            # verify latest changelog entry == updated_date
+            updated = rule.metadata['updated_date']
+            cl_date = local_last_entry['date']
+            err_msg = f'{rule_str} the most recent change date should match the updated date'
+            self.assertEqual(updated, cl_date, err_msg)
+
+            # -- post version.lock (v1+) --
+            # rule immediately after version lock with no new changes (no rule CL entries - or default)
+            # rule updates post-version1 (already in version.lock)
+            #
+            # -- pre version.lock (v0) --
+            # brand new rule (no rule CL entries - or default)
+            # rule updates pre-version1 (not in version.lock)
+            # # # # # # #
+
+            # -- post version.lock (v1+) --
+            if rule.id in self.rule_versions:
+                global_log = self.changelog.get(rule.id, [])
+                self.assertGreater(len(global_log), 0, f'{rule_str} missing global changelog entry')
+                rule_version_entry = self.rule_versions[rule.id]
+
+                # non v0 rules should always have this has the base entry
+                err_msg = f'{rule_str} rules with versions greater than 1 and no new changes require a base ' \
+                          f'`_version_locked_` changelog entry'
+                self.assertEqual('_version_locked_', local_log[0]['message'], err_msg)
+
+                # rule immediately after version lock with no new changes
+                if rule_hash != rule_version_entry['sha256']:
+                    err_msg = f'{rule_str} not enough rule changelog entries'
+                    self.assertGreater(len(local_log), 2, err_msg)
+
+            # -- pre version.lock (v0) --
+            else:
+                # brand new rule (no rule CL entries - or default "_new_rule_")
+                err_msg = f'{rule_str} new rules which have not had an initial version lock require a base ' \
+                          f'_rule_created_ changelog entry'
+                self.assertEqual('_rule_created_', local_log[0]['message'], err_msg)
+
+            err_msg = f'{rule_str} rule hash does not match latest rule change: update hash or add entry if new'
+            self.assertEqual(rule_hash, local_last_entry['sha256'], err_msg)

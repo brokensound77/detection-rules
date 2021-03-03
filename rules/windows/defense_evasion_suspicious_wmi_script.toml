@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/09/02"
 maturity = "production"
-updated_date = "2021/01/21"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "82928f6989a905532c7891f8bb3480469be21117a906751d0aec076435a267ca"
+
 
 [rule]
 author = ["Elastic"]
@@ -42,3 +49,4 @@ reference = "https://attack.mitre.org/techniques/T1220/"
 id = "TA0005"
 name = "Defense Evasion"
 reference = "https://attack.mitre.org/tactics/TA0005/"
+

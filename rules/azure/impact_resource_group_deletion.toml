@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/17"
 maturity = "production"
-updated_date = "2020/12/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "b5f1102902e0aa82b044f0318fe48c46913cc697fb211c998ff0241d96ab71e3"
+
 
 [rule]
 author = ["Elastic"]
@@ -45,12 +52,11 @@ id = "T1485"
 name = "Data Destruction"
 reference = "https://attack.mitre.org/techniques/T1485/"
 
+
 [rule.threat.tactic]
 id = "TA0040"
 name = "Impact"
 reference = "https://attack.mitre.org/tactics/TA0040/"
-
-
 [[rule.threat]]
 framework = "MITRE ATT&CK"
 [[rule.threat.technique]]
@@ -61,6 +67,7 @@ reference = "https://attack.mitre.org/techniques/T1562/"
 id = "T1562.001"
 name = "Disable or Modify Tools"
 reference = "https://attack.mitre.org/techniques/T1562/001/"
+
 
 
 [rule.threat.tactic]

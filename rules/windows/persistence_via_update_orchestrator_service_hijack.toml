@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/17"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "9c9dbc205ef2c8b42bc4e8a89996e6bae0b7071eeca10e3fb45d5e8b97b46b2d"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,10 +29,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Persistence"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.parent.name:svchost.exe and
-  process.parent.args:(UsoSvc or usosvc) and
-  not process.name:(UsoClient.exe or usoclient.exe or MusNotification.exe or musnotification.exe or MusNotificationUx.exe or musnotificationux.exe)
+event.category:process and event.type:(start or process_started) and process.parent.name:svchost.exe and process.parent.args:(UsoSvc or usosvc) and not process.name:(UsoClient.exe or usoclient.exe or MusNotification.exe or musnotification.exe or MusNotificationUx.exe or musnotificationux.exe)
 '''
 
 
@@ -39,6 +43,7 @@ reference = "https://attack.mitre.org/techniques/T1543/"
 id = "T1543.003"
 name = "Windows Service"
 reference = "https://attack.mitre.org/techniques/T1543/003/"
+
 
 
 [rule.threat.tactic]

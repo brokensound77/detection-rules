@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/12/14"
 maturity = "production"
-updated_date = "2020/12/14"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "7a4f04aa1b58e764f3530e79089f90cf6a7636963425fa11485e40030542ea55"
+
 
 [rule]
 author = ["Elastic"]
@@ -25,21 +32,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Command and Control"]
 type = "query"
 
 query = '''
-event.category:network and event.type:protocol and network.protocol:http and
-	process.name:(
-		ConfigurationWizard.exe or
-		NetFlowService.exe or
-		NetflowDatabaseMaintenance.exe or
-		SolarWinds.Administration.exe or
-		SolarWinds.BusinessLayerHost.exe or
-		SolarWinds.BusinessLayerHostx64.exe or
-		SolarWinds.Collector.Service.exe or
-		SolarwindsDiagnostics.exe) and
-  http.request.body.content:((
-    (*/swip/Upload.ashx* and (POST* or PUT*)) or
-    (*/swip/SystemDescription* and (GET* or HEAD*)) or
-    (*/swip/Events* and (GET* or HEAD*))) and not
-    *solarwinds.com*)
+event.category:network and event.type:protocol and network.protocol:http and process.name:( ConfigurationWizard.exe or NetFlowService.exe or NetflowDatabaseMaintenance.exe or SolarWinds.Administration.exe or SolarWinds.BusinessLayerHost.exe or SolarWinds.BusinessLayerHostx64.exe or SolarWinds.Collector.Service.exe or SolarwindsDiagnostics.exe) and http.request.body.content:(( (*/swip/Upload.ashx* and (POST* or PUT*)) or (*/swip/SystemDescription* and (GET* or HEAD*)) or (*/swip/Events* and (GET* or HEAD*))) and not *solarwinds.com*)
 '''
 
 

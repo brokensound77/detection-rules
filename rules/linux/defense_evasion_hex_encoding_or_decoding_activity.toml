@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/04/17"
 maturity = "production"
-updated_date = "2020/11/03"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "d5f70e91eea294b0aba75d327617bbacb898f6163649faa28c5e92204a3756ce"
+
 
 [rule]
 author = ["Elastic"]
@@ -39,6 +46,7 @@ reference = "https://attack.mitre.org/techniques/T1140/"
 id = "T1027"
 name = "Obfuscated Files or Information"
 reference = "https://attack.mitre.org/techniques/T1027/"
+
 
 [rule.threat.tactic]
 id = "TA0005"

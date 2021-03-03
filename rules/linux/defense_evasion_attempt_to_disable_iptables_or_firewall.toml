@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/04/24"
 maturity = "production"
-updated_date = "2020/12/09"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "87d42f9709d9399e1b79c6e7019210984844d88b6c851d8104d64ccdf606381d"
+
 
 [rule]
 author = ["Elastic"]
@@ -21,13 +28,7 @@ tags = ["Elastic", "Host", "Linux", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.name:ufw and process.args:(allow or disable or reset) or
-
-  (((process.name:service and process.args:stop) or
-     (process.name:chkconfig and process.args:off) or
-     (process.name:systemctl and process.args:(disable or stop or kill))) and
-   process.args:(firewalld or ip6tables or iptables))
+event.category:process and event.type:(start or process_started) and process.name:ufw and process.args:(allow or disable or reset) or  (((process.name:service and process.args:stop) or (process.name:chkconfig and process.args:off) or (process.name:systemctl and process.args:(disable or stop or kill))) and process.args:(firewalld or ip6tables or iptables))
 '''
 
 
@@ -41,6 +42,7 @@ reference = "https://attack.mitre.org/techniques/T1562/"
 id = "T1562.001"
 name = "Disable or Modify Tools"
 reference = "https://attack.mitre.org/techniques/T1562/001/"
+
 
 
 [rule.threat.tactic]

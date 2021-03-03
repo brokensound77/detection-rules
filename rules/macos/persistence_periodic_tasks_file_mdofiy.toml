@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2021/01/21"
 maturity = "production"
-updated_date = "2021/01/21"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_rule_created_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "a194fff934b50fd3fc0c08502f20099bcfb47d92191017c169a41a40781088a7"
+
 
 [rule]
 author = ["Elastic"]
@@ -26,8 +33,7 @@ tags = ["Elastic", "Host", "macOS", "Threat Detection", "Persistence"]
 type = "query"
 
 query = '''
-event.category:"file" and not event.type:"deletion" and
- file.path:(/private/etc/periodic/* or /private/etc/defaults/periodic.conf or /private/etc/periodic.conf)
+event.category:"file" and not event.type:"deletion" and file.path:(/private/etc/periodic/* or /private/etc/defaults/periodic.conf or /private/etc/periodic.conf)
 '''
 
 

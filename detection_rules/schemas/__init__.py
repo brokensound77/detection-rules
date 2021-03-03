@@ -2,20 +2,29 @@
 # or more contributor license agreements. Licensed under the Elastic License;
 # you may not use this file except in compliance with the Elastic License.
 
-from .base import TomlMetadata
+from typing import Dict
+
+from .base import TomlMetadata, BaseApiSchema
 from .rta_schema import validate_rta_mapping
 from ..semver import Version
+
+from .changelog import Changelog
 
 # import all of the schema versions
 from .v7_8 import ApiSchema78
 from .v7_9 import ApiSchema79
 from .v7_10 import ApiSchema710
 from .v7_11 import ApiSchema711
+from .v7_12 import ApiSchema712
+from .v7_13 import ApiSchema713
 
 __all__ = (
     "all_schemas",
+    "Changelog",
     "downgrade",
     "CurrentSchema",
+    "get_schema",
+    "get_schemas",
     "validate_rta_mapping",
     "TomlMetadata",
 )
@@ -25,6 +34,8 @@ all_schemas = [
     ApiSchema79,
     ApiSchema710,
     ApiSchema711,
+    ApiSchema712,
+    ApiSchema713,
 ]
 
 CurrentSchema = all_schemas[-1]
@@ -57,3 +68,15 @@ def downgrade(api_contents: dict, target_version: str):
             break
 
     return api_contents
+
+
+def get_schema(stack_version: str):
+    """Get a schema by stack version."""
+    for schema in all_schemas:
+        if schema.STACK_VERSION == stack_version:
+            return schema
+
+
+def get_schemas() -> Dict[Version, BaseApiSchema]:
+    """Get all schemas by stack version."""
+    return {Version(s.STACK_VERSION): s for s in all_schemas}

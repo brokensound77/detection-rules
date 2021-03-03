@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/11/30"
 maturity = "production"
-updated_date = "2020/12/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "dad571cede63daa41944ed5b2a5c542fccb3af6b554ccc696aa214d87d8e477d"
+
 
 [rule]
 author = ["Elastic"]
@@ -30,9 +37,7 @@ tags = ["Elastic", "Cloud", "Microsoft 365", "Continuous Monitoring", "SecOps", 
 type = "query"
 
 query = '''
-event.dataset:o365.audit and event.provider:(SkypeForBusiness or MicrosoftTeams) and
-event.category:web and event.action:"Set-CsTenantFederationConfiguration" and
-o365.audit.Parameters.AllowFederatedUsers:True and event.outcome:success
+event.dataset:o365.audit and event.provider:(SkypeForBusiness or MicrosoftTeams) and event.category:web and event.action:"Set-CsTenantFederationConfiguration" and o365.audit.Parameters.AllowFederatedUsers:True and event.outcome:success
 '''
 
 

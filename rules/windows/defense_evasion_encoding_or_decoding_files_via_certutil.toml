@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/02/18"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "4acc0021da72b329f72eb25528386a9b7ee3c56f082484c8a10f4c9f906e62ce"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,8 +29,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.name:certutil.exe and process.args:(-decode or -encode or /decode or /encode)
+event.category:process and event.type:(start or process_started) and process.name:certutil.exe and process.args:(-decode or -encode or /decode or /encode)
 '''
 
 

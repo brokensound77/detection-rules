@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/18"
 maturity = "production"
-updated_date = "2020/11/03"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "4231722b2c377f5fb4cb400e9418ad9b537ea08498dcfc356e3fa2dd8d79b86e"
+
 
 [rule]
 author = ["Elastic"]
@@ -22,9 +29,7 @@ tags = ["Elastic", "Host", "macOS", "Threat Detection", "Lateral Movement"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
- process.name:systemsetup and
- process.args:("-f" and "-setremotelogin" and on)
+event.category:process and event.type:(start or process_started) and process.name:systemsetup and process.args:("-f" and "-setremotelogin" and on)
 '''
 
 

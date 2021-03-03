@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/12/07"
 maturity = "production"
-updated_date = "2020/12/07"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "4e88ca6458c7a271beefea95422cc2b97c7ba6731f400d6a97c932d3535ff4f0"
+
 
 [rule]
 author = ["Elastic"]
@@ -42,3 +49,4 @@ reference = "https://attack.mitre.org/techniques/T1037/"
 id = "TA0003"
 name = "Persistence"
 reference = "https://attack.mitre.org/tactics/TA0003/"
+

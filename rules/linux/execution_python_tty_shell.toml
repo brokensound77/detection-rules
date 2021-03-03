@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/04/15"
 maturity = "production"
-updated_date = "2020/11/03"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "d389ff3e1f93109a4c4170ebd5c88df59d01b3304914f0be3795f5cba7270cf4"
+
 
 [rule]
 author = ["Elastic"]
@@ -21,10 +28,7 @@ tags = ["Elastic", "Host", "Linux", "Threat Detection", "Execution"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and process.name:python and
-  process.args:("import pty; pty.spawn(\"/bin/sh\")" or
-                "import pty; pty.spawn(\"/bin/dash\")" or
-                "import pty; pty.spawn(\"/bin/bash\")")
+event.category:process and event.type:(start or process_started) and process.name:python and process.args:("import pty; pty.spawn(\"/bin/sh\")" or "import pty; pty.spawn(\"/bin/dash\")" or "import pty; pty.spawn(\"/bin/bash\")")
 '''
 
 

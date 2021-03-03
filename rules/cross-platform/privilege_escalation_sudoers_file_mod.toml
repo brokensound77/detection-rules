@@ -1,7 +1,13 @@
 [metadata]
 creation_date = "2020/04/13"
 maturity = "production"
-updated_date = "2021/01/18"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "554a73c4e5509df63ec1e29fd5369f3ffd5056ffdfb78fcbefbff197265b9405"
 
 
 [rule]
@@ -36,6 +42,7 @@ reference = "https://attack.mitre.org/techniques/T1548/"
 id = "T1548.003"
 name = "Sudo and Sudo Caching"
 reference = "https://attack.mitre.org/techniques/T1548/003/"
+
 
 
 [rule.threat.tactic]

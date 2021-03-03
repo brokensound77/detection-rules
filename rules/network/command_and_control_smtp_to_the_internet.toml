@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/02/18"
 maturity = "production"
-updated_date = "2020/11/03"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "88b2bc63cda4078953dc59855583991e5fa306c3c717928e496e92c2d3deef27"
+
 
 [rule]
 author = ["Elastic"]
@@ -28,23 +35,7 @@ tags = ["Elastic", "Host", "Network", "Threat Detection", "Command and Control"]
 type = "query"
 
 query = '''
-event.category:(network or network_traffic) and network.transport:tcp and (destination.port:(25 or 465 or 587) or event.dataset:zeek.smtp) and
-  source.ip:(
-    10.0.0.0/8 or
-    172.16.0.0/12 or
-    192.168.0.0/16
-  ) and
-  not destination.ip:(
-    10.0.0.0/8 or
-    127.0.0.0/8 or
-    169.254.0.0/16 or
-    172.16.0.0/12 or
-    192.168.0.0/16 or
-    224.0.0.0/4 or
-    "::1" or
-    "FE80::/10" or
-    "FF00::/8"
-  )
+event.category:(network or network_traffic) and network.transport:tcp and (destination.port:(25 or 465 or 587) or event.dataset:zeek.smtp) and source.ip:( 10.0.0.0/8 or 172.16.0.0/12 or 192.168.0.0/16 ) and not destination.ip:( 10.0.0.0/8 or 127.0.0.0/8 or 169.254.0.0/16 or 172.16.0.0/12 or 192.168.0.0/16 or 224.0.0.0/4 or "::1" or "FE80::/10" or "FF00::/8" )
 '''
 
 

@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/05/20"
 maturity = "production"
-updated_date = "2020/12/09"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "49611c41d6fe582c484c7a296b75e49bbea84a714e6dd7230e44d3179d0c1c66"
+
 
 [rule]
 author = ["Elastic"]
@@ -50,8 +57,6 @@ reference = "https://attack.mitre.org/techniques/T1485/"
 id = "TA0040"
 name = "Impact"
 reference = "https://attack.mitre.org/tactics/TA0040/"
-
-
 [[rule.threat]]
 framework = "MITRE ATT&CK"
 [[rule.threat.technique]]
@@ -62,6 +67,7 @@ reference = "https://attack.mitre.org/techniques/T1562/"
 id = "T1562.001"
 name = "Disable or Modify Tools"
 reference = "https://attack.mitre.org/techniques/T1562/001/"
+
 
 
 [rule.threat.tactic]

@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/09/14"
 maturity = "production"
-updated_date = "2020/10/26"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "cc04c68a382fb37bd26c5adb30a32d599bb5e1338a79d4c430ce5738b6a45d78"
+
 
 [rule]
 author = ["Elastic"]
@@ -36,8 +43,7 @@ tags = [
 type = "query"
 
 query = '''
-event.type:creation and event.module:zoom and event.dataset:zoom.webhook and
-  event.action:meeting.created and not zoom.meeting.password:*
+event.type:creation and event.module:zoom and event.dataset:zoom.webhook and event.action:meeting.created and not zoom.meeting.password:*
 '''
 
 

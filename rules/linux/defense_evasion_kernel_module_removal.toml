@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/04/24"
 maturity = "production"
-updated_date = "2020/12/09"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "436cd24e09346d4810af409e99f550c88c21aaa6e82071a9b823748f37a5217a"
+
 
 [rule]
 author = ["Elastic"]
@@ -29,8 +36,7 @@ tags = ["Elastic", "Host", "Linux", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.args:((rmmod and sudo) or (modprobe and sudo and ("--remove" or "-r")))
+event.category:process and event.type:(start or process_started) and process.args:((rmmod and sudo) or (modprobe and sudo and ("--remove" or "-r")))
 '''
 
 
@@ -61,6 +67,7 @@ reference = "https://attack.mitre.org/techniques/T1547/"
 id = "T1547.006"
 name = "Kernel Modules and Extensions"
 reference = "https://attack.mitre.org/techniques/T1547/006/"
+
 
 
 [rule.threat.tactic]

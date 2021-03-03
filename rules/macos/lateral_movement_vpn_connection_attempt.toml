@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/01/25"
 maturity = "production"
-updated_date = "2020/01/25"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_rule_created_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "59a612707a0861d7c0f0d01b8ca4fb1d5a47633371adf5cdef314c9b851c8cd4"
+
 
 [rule]
 author = ["Elastic"]
@@ -44,3 +51,4 @@ reference = "https://attack.mitre.org/techniques/T1021/"
 id = "TA0008"
 name = "Lateral Movement"
 reference = "https://attack.mitre.org/tactics/TA0008/"
+

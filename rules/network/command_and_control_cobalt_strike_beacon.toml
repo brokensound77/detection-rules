@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/07/06"
 maturity = "production"
-updated_date = "2020/12/09"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "547beccb9e948068f7f206f95c156d102b38063a4a26ef88d383ffc7af07e6d8"
+
 
 [rule]
 author = ["Elastic"]
@@ -51,6 +58,7 @@ reference = "https://attack.mitre.org/techniques/T1568/"
 id = "T1568.002"
 name = "Domain Generation Algorithms"
 reference = "https://attack.mitre.org/techniques/T1568/002/"
+
 
 
 [rule.threat.tactic]

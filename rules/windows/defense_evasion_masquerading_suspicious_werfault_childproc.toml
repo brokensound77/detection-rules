@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/24"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "7a3432cc8ea24f6e2960e1379ea7befce77b101c799d7ba480c253d92e0ea4f2"
+
 
 [rule]
 author = ["Elastic"]
@@ -26,9 +33,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
- process.parent.name:WerFault.exe and
- not process.name:(cofire.exe or psr.exe or VsJITDebugger.exe or TTTracer.exe or rundll32.exe)
+event.category:process and event.type:(start or process_started) and process.parent.name:WerFault.exe and not process.name:(cofire.exe or psr.exe or VsJITDebugger.exe or TTTracer.exe or rundll32.exe)
 '''
 
 

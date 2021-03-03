@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/05/21"
 maturity = "production"
-updated_date = "2020/10/26"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "1d046cd29ab5f0036180c662210f193b534c30bc56f7fac5312bd35b633090fc"
+
 
 [rule]
 author = ["Elastic"]
@@ -46,3 +53,4 @@ reference = "https://attack.mitre.org/techniques/T1499/"
 id = "TA0040"
 name = "Impact"
 reference = "https://attack.mitre.org/tactics/TA0040/"
+

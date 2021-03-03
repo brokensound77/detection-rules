@@ -37,16 +37,35 @@ def root(ctx, debug):
 
 @root.command('create-rule')
 @click.argument('path', type=click.Path(dir_okay=False))
+@click.option('--minimum_kibana_version', '-m', help='Minimum kibana version that supports the rule')
 @click.option('--config', '-c', type=click.Path(exists=True, dir_okay=False), help='Rule or config file')
 @click.option('--required-only', is_flag=True, help='Only prompt for required fields')
 @click.option('--rule-type', '-t', type=click.Choice(CurrentSchema.RULE_TYPES), help='Type of rule to create')
-def create_rule(path, config, required_only, rule_type):
+def create_rule(path, minimum_kibana_version, config, required_only, rule_type):
     """Create a detection rule."""
     contents = load_rule_contents(config, single_only=True)[0] if config else {}
     try:
-        return Rule.build(path, rule_type=rule_type, required_only=required_only, save=True, **contents)
+        return Rule.build(path, rule_type=rule_type, required_only=required_only,
+                          minimum_kibana_version=minimum_kibana_version, save=True, **contents)
     finally:
         rule_loader.reset()
+
+
+@root.command('add-changelog')
+@click.argument('change')
+@click.option('--rule-file', '-f', required=True, type=click.File('r'), help='Specify a specific rule file')
+@click.option('--pull-request', '-p', help='Optional pull request number')
+@click.option('--update', '-u', is_flag=True, help='Update the last entry rather then adding a new one')
+def add_changelog_entry(change, rule_file, pull_request, update):
+    """Add or update a changelog entry to a rule"""
+    if pull_request:
+        assert pull_request.isnumeric(), '--pull-request should be a number only'
+
+    contents = pytoml.load(rule_file)
+    rule = Rule(path=rule_file.name, contents=contents)
+    changelog = rule.append_changelog_entry(message=change, pull_request=pull_request, update=update)
+    rule.save(as_rule=True)
+    click.echo(f'Created entry:\n{json.dumps(changelog, sort_keys=True, indent=2)}')
 
 
 @root.command('import-rules')
@@ -71,7 +90,9 @@ def import_rules(infile, directory):
         base_path = contents.get('name') or contents.get('rule', {}).get('name')
         base_path = name_to_filename(base_path) if base_path else base_path
         rule_path = os.path.join(RULES_DIR, base_path) if base_path else None
-        Rule.build(rule_path, required_only=True, save=True, verbose=True, **contents)
+        contents = contents.get('rule', contents)
+        metadata = contents.get('metadata', {})
+        Rule.build(rule_path, required_only=True, save=True, verbose=True, **dict(rule=contents, metadata=metadata))
 
 
 @root.command('toml-lint')

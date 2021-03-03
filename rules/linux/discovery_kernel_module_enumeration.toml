@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/04/23"
 maturity = "production"
-updated_date = "2020/11/03"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "f63deca5ee1ae8456d4c7e880f55784e73ba5ea2c372e828f5fbd65df3a32c92"
+
 
 [rule]
 author = ["Elastic"]
@@ -28,8 +35,7 @@ tags = ["Elastic", "Host", "Linux", "Threat Detection", "Discovery"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.args:(kmod and list and sudo or sudo and (depmod or lsmod or modinfo))
+event.category:process and event.type:(start or process_started) and process.args:(kmod and list and sudo or sudo and (depmod or lsmod or modinfo))
 '''
 
 

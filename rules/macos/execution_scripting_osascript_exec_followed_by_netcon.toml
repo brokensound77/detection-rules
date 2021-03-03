@@ -1,14 +1,20 @@
 [metadata]
 creation_date = "2020/12/07"
 maturity = "production"
-updated_date = "2020/12/07"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "c9c44540966b2d9592ad5f670eba6bd6ee29beba41798f2788fc66fd3c0f6c1d"
+
 
 [rule]
 author = ["Elastic"]
 description = """
-Detects execution via the Apple script interpreter (osascript) followed by a network connection from
-the same process within a short time period. Adversaries may use malicious scripts for execution and command and
-control.
+Detects execution via the Apple script interpreter (osascript) followed by a network connection from the same process
+within a short time period. Adversaries may use malicious scripts for execution and command and control.
 """
 from = "now-9m"
 index = ["auditbeat-*", "logs-endpoint.events.*"]
@@ -64,3 +70,4 @@ reference = "https://attack.mitre.org/techniques/T1105/"
 id = "TA0011"
 name = "Command and Control"
 reference = "https://attack.mitre.org/tactics/TA0011/"
+

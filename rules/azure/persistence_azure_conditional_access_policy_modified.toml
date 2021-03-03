@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/09/01"
 maturity = "production"
-updated_date = "2020/12/15"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "ebe555d81187dfe879c5149586378c5400cd42e43e5f9c7f02b63bb71f8916f5"
+
 
 [rule]
 author = ["Elastic"]
@@ -25,12 +32,7 @@ tags = ["Elastic", "Cloud", "Azure", "Continuous Monitoring", "SecOps", "Configu
 type = "query"
 
 query = '''
-event.dataset:(azure.activitylogs or azure.auditlogs) and
-  (
-    azure.activitylogs.operation_name:"Update policy" or
-    azure.auditlogs.operation_name:"Update policy"
-  ) and
-  event.outcome:(Success or success)
+event.dataset:(azure.activitylogs or azure.auditlogs) and ( azure.activitylogs.operation_name:"Update policy" or azure.auditlogs.operation_name:"Update policy" ) and event.outcome:(Success or success)
 '''
 
 

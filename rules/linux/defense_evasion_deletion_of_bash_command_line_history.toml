@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/05/04"
 maturity = "production"
-updated_date = "2021/02/04"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "9243abd043afe9e1184acc273a65b74fe25196c57c065cb108bf9c45b71a5cf9"
+
 
 [rule]
 author = ["Elastic"]
@@ -44,7 +51,9 @@ name = "Clear Command History"
 reference = "https://attack.mitre.org/techniques/T1070/003/"
 
 
+
 [rule.threat.tactic]
 id = "TA0005"
 name = "Defense Evasion"
 reference = "https://attack.mitre.org/tactics/TA0005/"
+

@@ -1,7 +1,14 @@
 [metadata]
 creation_date = "2020/08/21"
 maturity = "production"
-updated_date = "2020/01/28"
+minimum_kibana_version = "7.13"
+updated_date = "2021/03/03"
+[[metadata.changelog]]
+message = "_version_locked_"
+date = "2021/03/03"
+pull_request = ""
+sha256 = "2b58f7d546661af50365c0264d4cbaeeb35ee4ac3a3c61d06f36444b96c6c92e"
+
 
 [rule]
 author = ["Elastic"]
@@ -18,11 +25,7 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Execution"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and
-  process.name:cmd.exe and
-  process.parent.name:(lsass.exe or csrss.exe or notepad.exe or regsvr32.exe or dllhost.exe or LogonUI.exe or wermgr.exe or spoolsv.exe or
-   jucheck.exe or jusched.exe or ctfmon.exe or taskhostw.exe or GoogleUpdate.exe or sppsvc.exe or sihost.exe or slui.exe or
-   SIHClient.exe or SearchIndexer.exe or SearchProtocolHost.exe or FlashPlayerUpdateService.exe or WerFault.exe or WUDFHost.exe or unsecapp.exe or wlanext.exe)
+event.category:process and event.type:(start or process_started) and process.name:cmd.exe and process.parent.name:(lsass.exe or csrss.exe or notepad.exe or regsvr32.exe or dllhost.exe or LogonUI.exe or wermgr.exe or spoolsv.exe or jucheck.exe or jusched.exe or ctfmon.exe or taskhostw.exe or GoogleUpdate.exe or sppsvc.exe or sihost.exe or slui.exe or SIHClient.exe or SearchIndexer.exe or SearchProtocolHost.exe or FlashPlayerUpdateService.exe or WerFault.exe or WUDFHost.exe or unsecapp.exe or wlanext.exe)
 '''
 
 
