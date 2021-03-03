@@ -20,6 +20,7 @@ from .v7_13 import ApiSchema713
 
 __all__ = (
     "all_schemas",
+    "available_versions",
     "Changelog",
     "downgrade",
     "CurrentSchema",
@@ -37,8 +38,8 @@ all_schemas = [
     ApiSchema712,
     ApiSchema713,
 ]
-
 CurrentSchema = all_schemas[-1]
+available_versions = [cls.STACK_VERSION for cls in all_schemas]
 
 
 def downgrade(api_contents: dict, target_version: str):

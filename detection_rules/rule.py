@@ -8,6 +8,8 @@ import hashlib
 import json
 import os
 import time
+from pathlib import Path
+from uuid import uuid4
 
 import click
 import kql
@@ -16,7 +18,7 @@ import eql
 from . import ecs, beats
 from .attack import tactics, build_threat_map_entry, matrix
 from .rule_formatter import nested_normalize, toml_write
-from .schemas import TomlMetadata, all_schemas, get_schemas
+from .schemas import TomlMetadata, downgrade, all_schemas, get_schemas
 from .semver import Version
 from .utils import get_path, clear_caches, cached
 
@@ -210,12 +212,31 @@ class Rule(object):
         return contents
 
     def rule_format(self, formatted_query=True):
-        """Get the contents in rule format."""
+        """Get the contents and metadata in rule format."""
         contents = self.contents.copy()
         if formatted_query:
             if self.formatted_rule:
                 contents['query'] = self.formatted_rule
         return {'metadata': self.metadata, 'rule': contents}
+
+    def detailed_format(self, add_missing_defaults=True, **additional_details):
+        """Get the rule with expanded details."""
+        from .rule_loader import get_non_required_defaults_by_type
+
+        rule = self.rule_format().copy()
+
+        if add_missing_defaults:
+            non_required_defaults = get_non_required_defaults_by_type(self.type)
+            rule['rule'].update({k: v for k, v in non_required_defaults.items() if k not in rule['rule']})
+
+        rule['details'] = {
+            'flat_mitre': self.get_flat_mitre(),
+            'relative_path': str(Path(self.path).resolve().relative_to(RULES_DIR)),
+            'unique_fields': self.unique_fields,
+
+        }
+        rule['details'].update(**additional_details)
+        return rule
 
     def normalize(self, indent=2):
         """Normalize the (api only) contents and return a serialized dump of it."""
@@ -568,3 +589,13 @@ class Rule(object):
         click.echo('  - to have a rule validate against a specific beats schema, add it to metadata->beats_version')
 
         return rule
+
+
+def downgrade_contents_from_rule(rule: Rule, target_version: str) -> dict:
+    """Generate the downgraded contents from a rule."""
+    payload = rule.contents.copy()
+    meta = payload.setdefault("meta", {})
+    meta["original"] = dict(id=rule.id, **rule.metadata)
+    payload["rule_id"] = str(uuid4())
+    payload = downgrade(payload, target_version)
+    return payload

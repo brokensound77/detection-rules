@@ -29,7 +29,9 @@ tags = ["Elastic", "Host", "Windows", "Threat Detection", "Defense Evasion"]
 type = "query"
 
 query = '''
-event.category:process and event.type:(start or process_started) and process.parent.name:conhost.exe
+event.category:process and event.type:(start or process_started) and
+  process.parent.name:conhost.exe and
+  not process.executable:("C:\Windows\splwow64.exe" or "C:\Windows\System32\WerFault.exe" or "C:\\Windows\System32\conhost.exe")
 '''
 
 
@@ -45,4 +47,3 @@ reference = "https://attack.mitre.org/techniques/T1055/"
 id = "TA0005"
 name = "Defense Evasion"
 reference = "https://attack.mitre.org/tactics/TA0005/"
-
