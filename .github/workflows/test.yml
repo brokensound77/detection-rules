@@ -18,6 +18,6 @@ jobs:
             console.log(
               github.orgs.getMembershipForUser({
                 org: "elastic",
-                user: context.actor
+                user: context.payload.actor
               })
             )
