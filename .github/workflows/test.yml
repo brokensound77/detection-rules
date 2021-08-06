@@ -17,7 +17,7 @@ jobs:
             console.log(context)
             console.log(
               github.orgs.getMembershipForUser({
-                org: elastic,
+                org: "elastic",
                 user: context.actor
               })
             )
