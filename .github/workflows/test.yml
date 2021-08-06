@@ -6,15 +6,14 @@ on:
   pull_request:
     branches: [ "*" ]
 
-jobs:
-  test:
-    uses: actions/github-script@v4
-    with:
-      script: |
-        console.log(context)
-        console.log(
-          github.orgs.getMembershipForUser({
-            org: elastic,
-            user: context.actor
-          })
-        )
+test:
+  uses: actions/github-script@v4
+  with:
+    script: |
+      console.log(context)
+      console.log(
+        github.orgs.getMembershipForUser({
+          org: elastic,
+          user: context.actor
+        })
+      )
