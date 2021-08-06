@@ -20,3 +20,5 @@ jobs:
                 org: "elastic",
                 username: context.payload.sender.login
               })
+      - name: Get result
+        run: echo "${{steps.mem.outputs.result}}"
