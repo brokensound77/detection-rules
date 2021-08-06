@@ -8,9 +8,9 @@ on:
 
 jobs:
   test:
+    runs-on: ubuntu-latest
     steps:
       - name: membership
-        runs-on: ubuntu-latest
         uses: actions/github-script@v4
         with:
           script: |
