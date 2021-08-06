@@ -21,6 +21,7 @@ jobs:
                 username: context.payload.sender.login
               })
       - name: Add community label if not member of Elastic org
+        uses: actions/github-script@v4
         if: |
           "${{steps.mem.outputs.result}}" == "active"
         with:
