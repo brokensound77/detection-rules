@@ -2,20 +2,15 @@ name: Community
 
 on:
   pull_request_target:
-    branches:
-      - main
     types:
       - opened
-      - reopened
-      - unlabeled
-      - labeled
-      - closed
+  issues:
+    types:
+      - opened
 
 jobs:
-  label:
+  community-label:
     runs-on: ubuntu-latest
-    if: |
-      github.event.pull_request.state == "open"
     steps:
       - name: Determine membership
         uses: actions/github-script@v4
@@ -30,12 +25,12 @@ jobs:
       - name: Add community label for users not in Elastic org
         uses: actions/github-script@v4
         if: |
-          "${{steps.membership.outputs.result}}" == "active"
+          "${{ steps.membership.outputs.result.state }}" != "active"
         with:
           script: |
             github.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: ['elasticMember']
+              labels: ['community']
             })
