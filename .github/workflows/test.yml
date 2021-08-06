@@ -1,10 +1,12 @@
 name: test
 
 on:
-  push:
+  workflow_run:
     branches: [ "*" ]
-  pull_request:
-    branches: [ "*" ]
+  # push:
+  #  branches: [ "*" ]
+  # pull_request:
+  #  branches: [ "*" ]
 
 jobs:
   test:
