@@ -20,7 +20,14 @@ jobs:
                 org: "elastic",
                 username: context.payload.sender.login
               })
-      - name: label
+      - name: Add community label if not member of Elastic org
         if: |
           "${{steps.mem.outputs.result}}" == "active"
-        run: echo "ACTIVE - no label needed"
+        with:
+          script: |
+            github.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['elasticMember']
+            })
