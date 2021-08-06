@@ -15,7 +15,7 @@ jobs:
         with:
           script: |
             console.log(context)
-            github.orgs.checkPublicMembershipForUser({
+            console.log(github.orgs.getMembershipForUser({
                 org: "elastic",
                 username: context.payload.sender.login
-              })
+              }))
