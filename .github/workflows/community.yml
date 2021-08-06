@@ -1,4 +1,4 @@
-name: test
+name: Community
 
 on:
   pull_request_target:
@@ -12,7 +12,7 @@ on:
       - closed
 
 jobs:
-  test:
+  label:
     runs-on: ubuntu-latest
     if: |
       github.event.pull_request.state == "open"
