@@ -21,5 +21,6 @@ jobs:
                 username: context.payload.sender.login
               })
       - name: label
-        if: "${{steps.mem.outputs.result}}" == "active"
-          run: echo "ACTIVE - no label needed"
+        if: |
+          "${{steps.mem.outputs.result}}" == "active"
+        run: echo "ACTIVE - no label needed"
