@@ -1,12 +1,10 @@
 name: test
 
 on:
-  push_target:
+  push:
     branches: [ "*" ]
-  # push:
-  #  branches: [ "*" ]
-  # pull_request:
-  #  branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
 
 jobs:
   test:
@@ -15,10 +13,9 @@ jobs:
       - name: membership
         uses: actions/github-script@v4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             console.log(context)
-            github.orgs.getMembershipForUser({
+            github.orgs.checkPublicMembershipForUser({
                 org: "elastic",
                 username: context.payload.sender.login
               })
