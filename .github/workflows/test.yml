@@ -1,11 +1,24 @@
 name: View context attributes
-uses: actions/github-script@v4
-with:
-  script: |
-    console.log(context)
-    console.log(
-      github.orgs.getMembershipForUser({
-        org: elastic,
-        user: context.actor
-      })
-    )
+on:
+  pull_request_target:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - unlabeled
+      - labeled
+      - closed
+
+jobs:
+  test:
+    uses: actions/github-script@v4
+    with:
+      script: |
+        console.log(context)
+        console.log(
+          github.orgs.getMembershipForUser({
+            org: elastic,
+            user: context.actor
+          })
+        )
