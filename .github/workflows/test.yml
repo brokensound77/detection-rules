@@ -8,14 +8,16 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-    uses: actions/github-script@v4
-    with:
-      script: |
-        console.log(context)
-        console.log(
-          github.orgs.getMembershipForUser({
-            org: elastic,
-            user: context.actor
-          })
-        )
+    steps:
+      - name: membership
+        runs-on: ubuntu-latest
+        uses: actions/github-script@v4
+        with:
+          script: |
+            console.log(context)
+            console.log(
+              github.orgs.getMembershipForUser({
+                org: elastic,
+                user: context.actor
+              })
+            )
