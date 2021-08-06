@@ -9,14 +9,17 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: |
-      github.orgs.getMembershipForAuthenticatedUser({org: "elastic", username: context.payload.sender.login}).state == "active"
     steps:
       - name: membership
         uses: actions/github-script@v4
+        id: mem
         with:
           github-token: ${{ secrets.READ_ORG_TOKEN }}
           script: |
-            echo "No label needed"
+            return github.orgs.getMembershipForAuthenticatedUser({
+                org: "elastic",
+                username: context.payload.sender.login
+              })
       - name: Get result
-        run: echo "${{steps.mem.outputs.result}}"
+        if: "${{steps.mem.outputs.result}}" == "active"
+          run: echo "ACTIVE - no label needed"
