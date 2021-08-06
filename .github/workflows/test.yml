@@ -1,4 +1,4 @@
-name: View context attributes
+name: test
 on:
   push:
     branches: [ "*" ]
