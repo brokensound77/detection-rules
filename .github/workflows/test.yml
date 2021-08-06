@@ -1,18 +1,25 @@
 name: test
 
 on:
-  push:
-    branches: [ "*" ]
-  pull_request:
-    branches: [ "*" ]
+  pull_request_target:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - unlabeled
+      - labeled
+      - closed
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: |
+      github.event.pull_request.state == "open"
     steps:
-      - name: membership
+      - name: Determine membership
         uses: actions/github-script@v4
-        id: mem
+        id: membership
         with:
           github-token: ${{ secrets.READ_ORG_TOKEN }}
           script: |
@@ -20,10 +27,10 @@ jobs:
                 org: "elastic",
                 username: context.payload.sender.login
               })
-      - name: Add community label if not member of Elastic org
+      - name: Add community label for users not in Elastic org
         uses: actions/github-script@v4
         if: |
-          "${{steps.mem.outputs.result}}" == "active"
+          "${{steps.membership.outputs.result}}" == "active"
         with:
           script: |
             github.issues.addLabels({
