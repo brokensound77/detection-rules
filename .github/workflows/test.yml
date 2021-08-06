@@ -1,7 +1,7 @@
 name: test
 
 on:
-  workflow_run:
+  push_target:
     branches: [ "*" ]
   # push:
   #  branches: [ "*" ]
