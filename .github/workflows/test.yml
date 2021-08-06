@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     if: |
-      github.orgs.getMembershipForAuthenticatedUser({org: "elastic", username: context.payload.sender.login}) == "active"
+      github.orgs.getMembershipForAuthenticatedUser({org: "elastic", username: context.payload.sender.login}).state == "active"
     steps:
       - name: membership
         uses: actions/github-script@v4
