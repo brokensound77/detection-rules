@@ -16,5 +16,5 @@ jobs:
           script: |
             github.orgs.getMembershipForUser({
                 org: "elastic",
-                user: context.payload.sender.login
+                username: context.payload.sender.login
               })
